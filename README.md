@@ -1,0 +1,3 @@
+# gatsby-source-shopify-core
+
+🛒🌎
