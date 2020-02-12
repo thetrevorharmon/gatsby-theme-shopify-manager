@@ -1,3 +1,6 @@
+// FOR REFERENCE ONLY
+// DO NOT USE
+
 import React, { useState, useEffect, useContext } from "react";
 import Client from "shopify-buy";
 
