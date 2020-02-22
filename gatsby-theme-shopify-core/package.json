@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "main": "gatsby-config.js",
   "license": "MIT",
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
   "peerDependencies": {
     "gatsby": "^2.19.18",
     "react": "^16.18.0",
