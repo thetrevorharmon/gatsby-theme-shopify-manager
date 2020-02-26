@@ -1,27 +1,14 @@
 import React, {useState} from 'react';
 import Client from 'shopify-buy';
-
-import {useCoreOptions} from '../utils';
-
-interface StoreContextShape {
-  client?: Client.Client;
-  setClient(client: Client.Client): void;
-}
-
-const StoreContext = React.createContext<StoreContextShape>({
-  client: undefined,
-  setClient: () => {
-    throw Error('You forgot to wrap this in a Provider object');
-  },
-});
+import {Context} from './Context';
 
 interface Props {
+  shopName: string;
+  accessToken: string;
   children: React.ReactNode;
 }
 
-export function StoreContextProvider({children}: Props) {
-  const {shopName, accessToken} = useCoreOptions();
-
+export function ContextProvider({shopName, accessToken, children}: Props) {
   let initialClient;
   try {
     initialClient = Client.buildClient({
@@ -37,13 +24,13 @@ export function StoreContextProvider({children}: Props) {
   const [client, setClient] = useState<Client.Client>(initialClient);
 
   return (
-    <StoreContext.Provider
+    <Context.Provider
       value={{
         client,
         setClient,
       }}
     >
       {children}
-    </StoreContext.Provider>
+    </Context.Provider>
   );
 }
