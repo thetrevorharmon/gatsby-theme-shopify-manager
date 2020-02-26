@@ -3,10 +3,12 @@
   "scripts": {
     "start": "yarn workspace example develop",
     "test": "jest --watch",
-    "testForBuild": "jest",
+    "test-build": "jest",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
-    "pretty": "prettier --write \"**/*.{ts,tsx,js,css,scss}\""
+    "pretty": "prettier --write \"**/*.{ts,tsx,js,css,scss}\"",
+    "type-check": "cd gatsby-theme-shopify-core && tsc --noEmit",
+    "build-example": "cd example && yarn build"
   },
   "workspaces": [
     "gatsby-theme-shopify-core",
