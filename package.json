@@ -7,8 +7,8 @@
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
     "pretty": "prettier --write \"**/*.{ts,tsx,js,css,scss}\"",
-    "type-check": "cd gatsby-theme-shopify-core && tsc --noEmit",
-    "build-example": "cd example && yarn build"
+    "type-check": "yarn workspace gatsby-theme-shopify-core tsc --noEmit",
+    "build-example": "yarn workspace example build"
   },
   "workspaces": [
     "gatsby-theme-shopify-core",
