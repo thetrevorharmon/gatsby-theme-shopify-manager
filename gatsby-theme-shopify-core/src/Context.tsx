@@ -3,12 +3,14 @@ import ShopifyBuy from 'shopify-buy';
 
 interface ContextShape {
   client?: ShopifyBuy.Client;
-  setClient(client: ShopifyBuy.Client): void;
+  cart?: ShopifyBuy.Cart;
+  setCart: React.Dispatch<React.SetStateAction<ShopifyBuy.Cart | undefined>>;
 }
 
 export const Context = React.createContext<ContextShape>({
   client: undefined,
-  setClient: () => {
+  cart: undefined,
+  setCart: () => {
     throw Error('You forgot to wrap this in a Provider object');
   },
 });
