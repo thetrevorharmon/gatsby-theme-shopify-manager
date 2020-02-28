@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {render} from '@testing-library/react';
+import {render, wait} from '@testing-library/react';
 import {Context} from '../Context';
 import {ContextProvider} from '../ContextProvider';
 import {TestHelpers} from '../utils';
@@ -21,7 +21,7 @@ describe('ContextProvider', () => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           accessToken={null}
-          shopName={TestHelpers.FAKE_SHOP_NAME}
+          shopName={TestHelpers.MOCK_SHOP_NAME}
         >
           <MockComponent />
         </ContextProvider>,
@@ -46,7 +46,7 @@ describe('ContextProvider', () => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           shopName={null}
-          accessToken={TestHelpers.FAKE_ACCESS_TOKEN}
+          accessToken={TestHelpers.MOCK_ACCESS_TOKEN}
         >
           <MockComponent />
         </ContextProvider>,
@@ -56,7 +56,7 @@ describe('ContextProvider', () => {
     console.error = originalError;
   });
 
-  it('passes the shopName and accessToken to the shopify-buy client', () => {
+  it('passes the shopName and accessToken to the shopify-buy client', async () => {
     const shopifyBuySpy = jest.spyOn(ShopifyBuy, 'buildClient');
     function MockComponent() {
       const {client} = useContext(Context);
@@ -65,20 +65,22 @@ describe('ContextProvider', () => {
 
     render(
       <ContextProvider
-        shopName={TestHelpers.FAKE_SHOP_NAME}
-        accessToken={TestHelpers.FAKE_ACCESS_TOKEN}
+        shopName={TestHelpers.MOCK_SHOP_NAME}
+        accessToken={TestHelpers.MOCK_ACCESS_TOKEN}
       >
         <MockComponent />
       </ContextProvider>,
     );
 
-    expect(shopifyBuySpy).toHaveBeenCalledWith({
-      storefrontAccessToken: TestHelpers.FAKE_ACCESS_TOKEN,
-      domain: TestHelpers.FAKE_DOMAIN,
-    });
+    await wait(() =>
+      expect(shopifyBuySpy).toHaveBeenCalledWith({
+        storefrontAccessToken: TestHelpers.MOCK_ACCESS_TOKEN,
+        domain: TestHelpers.MOCK_DOMAIN,
+      }),
+    );
   });
 
-  it('builds a shopify-buy client', () => {
+  it('builds a shopify-buy client', async () => {
     const shopifyBuySpy = jest.spyOn(ShopifyBuy, 'buildClient');
     function MockComponent() {
       const {client} = useContext(Context);
@@ -87,14 +89,14 @@ describe('ContextProvider', () => {
 
     render(
       <ContextProvider
-        shopName={TestHelpers.FAKE_DOMAIN}
-        accessToken={TestHelpers.FAKE_ACCESS_TOKEN}
+        shopName={TestHelpers.MOCK_DOMAIN}
+        accessToken={TestHelpers.MOCK_ACCESS_TOKEN}
       >
         <MockComponent />
       </ContextProvider>,
     );
 
-    expect(shopifyBuySpy).toHaveBeenCalled();
+    await wait(() => expect(shopifyBuySpy).toHaveBeenCalled());
   });
 
   it('provides a client object to the consumer', () => {
@@ -110,8 +112,8 @@ describe('ContextProvider', () => {
 
     const wrapper = render(
       <ContextProvider
-        shopName={TestHelpers.FAKE_SHOP_NAME}
-        accessToken={TestHelpers.FAKE_ACCESS_TOKEN}
+        shopName={TestHelpers.MOCK_SHOP_NAME}
+        accessToken={TestHelpers.MOCK_ACCESS_TOKEN}
       >
         <MockComponent />
       </ContextProvider>,
@@ -135,8 +137,8 @@ describe('ContextProvider', () => {
 
     const wrapper = render(
       <ContextProvider
-        shopName={TestHelpers.FAKE_SHOP_NAME}
-        accessToken={TestHelpers.FAKE_ACCESS_TOKEN}
+        shopName={TestHelpers.MOCK_SHOP_NAME}
+        accessToken={TestHelpers.MOCK_ACCESS_TOKEN}
       >
         <MockComponent />
       </ContextProvider>,

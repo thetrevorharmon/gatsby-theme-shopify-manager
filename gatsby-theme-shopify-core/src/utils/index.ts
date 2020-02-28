@@ -1,3 +1,3 @@
-export {useCoreOptions} from './useCoreOptions';
+import {useCoreOptions} from './useCoreOptions';
 import * as TestHelpers from './tests';
-export {TestHelpers};
+export {TestHelpers, useCoreOptions};
