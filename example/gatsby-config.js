@@ -11,5 +11,7 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 };

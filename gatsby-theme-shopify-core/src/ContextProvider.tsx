@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ShopifyBuy from 'shopify-buy';
 import {Context} from './Context';
 
@@ -20,6 +20,23 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
     storefrontAccessToken: accessToken,
     domain: `${shopName}.myshopify.com`,
   });
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function setupCart() {
+      if (mounted) {
+        const cart = await client.checkout.create();
+        setCart(cart);
+      }
+    }
+
+    setupCart();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <Context.Provider

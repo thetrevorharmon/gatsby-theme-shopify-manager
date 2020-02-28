@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "gatsby": "^2.19.18",
+    "gatsby-image": "^2.2.41",
+    "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-theme-shopify-core": "1.0.0",
+    "gatsby-transformer-sharp": "^2.3.16",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
