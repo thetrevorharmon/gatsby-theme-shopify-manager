@@ -1,3 +1,4 @@
 import {useCoreOptions} from './useCoreOptions';
-import * as TestHelpers from './TestHelpers';
-export {TestHelpers, useCoreOptions};
+import {LocalStorage, LocalStorageKeys} from './LocalStorage';
+
+export {useCoreOptions, LocalStorage, LocalStorageKeys};

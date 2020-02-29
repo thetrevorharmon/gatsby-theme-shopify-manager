@@ -47,4 +47,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ['node_modules/', '.cache/', 'public/'],
 };
