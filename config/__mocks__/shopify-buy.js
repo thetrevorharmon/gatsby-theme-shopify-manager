@@ -1,5 +1,5 @@
 const shopifyBuy = jest.requireActual('shopify-buy');
-const TestHelpers = require('../../gatsby-theme-shopify-core/src/utils/TestHelpers');
+const MocksFolder = require('../../gatsby-theme-shopify-core/src/mocks');
 
 shopifyBuy.buildClient = ({storefrontAccessToken, domain}) => {
   if (storefrontAccessToken == null) {
@@ -10,7 +10,7 @@ shopifyBuy.buildClient = ({storefrontAccessToken, domain}) => {
     throw new Error('new Config() requires the option domain');
   }
 
-  return TestHelpers.MOCK_CLIENT;
+  return MocksFolder.Mocks.CLIENT;
 };
 
 export default shopifyBuy;

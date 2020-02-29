@@ -12,7 +12,10 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/config/loadershim.js`],
+  setupFiles: [
+    `<rootDir>/config/loadershim.js`,
+    `<rootDir>/config/__mocks__/browser-mocks.js`,
+  ],
   setupFilesAfterEnv: ['<rootDir>/config/setup-test-env.js'],
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(jsx?|tsx?)$',
 };

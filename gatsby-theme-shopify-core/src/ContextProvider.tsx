@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ShopifyBuy from 'shopify-buy';
 import {Context} from './Context';
+import {LocalStorage, LocalStorageKeys} from './utils';
 
 interface Props {
   shopName: string;
@@ -22,20 +23,14 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
   });
 
   useEffect(() => {
-    let mounted = true;
-
     async function setupCart() {
-      if (mounted) {
-        const cart = await client.checkout.create();
-        setCart(cart);
-      }
+      const newCart = await client.checkout.create();
+
+      setCart(newCart);
+      LocalStorage.set(JSON.stringify(newCart), LocalStorageKeys.CART);
     }
 
     setupCart();
-
-    return () => {
-      mounted = false;
-    };
   }, []);
 
   return (
