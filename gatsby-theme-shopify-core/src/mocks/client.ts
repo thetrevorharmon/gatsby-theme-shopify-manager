@@ -1,10 +1,10 @@
-import {MOCK_CART} from './mockCart';
+import {CART} from './cart';
 
-export const MOCK_CLIENT = {
+export const CLIENT = {
   product: {},
   collection: {},
   checkout: {
-    create: jest.fn(() => MOCK_CART),
+    create: jest.fn(() => CART),
     fetch: jest.fn(),
     addLineItems: jest.fn(),
     clearLineItems: jest.fn(),

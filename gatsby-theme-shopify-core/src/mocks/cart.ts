@@ -1,4 +1,4 @@
-export const MOCK_CART = {
+export const CART = {
   id:
     'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
   ready: true,
