@@ -1,3 +1,4 @@
-import * as LocalStorage from './LocalStorage';
-import * as LocalStorageKeys from './keys';
+import {LocalStorage} from './LocalStorage';
+import {LocalStorageKeys} from './keys';
+
 export {LocalStorage, LocalStorageKeys};

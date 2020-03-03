@@ -11,6 +11,11 @@ function MockComponent() {
   return <p>{cart?.id}</p>;
 }
 
+afterEach(() => {
+  LocalStorage.set(LocalStorageKeys.CART, '');
+  jest.clearAllMocks();
+});
+
 describe('ContextProvider', () => {
   it('throws an error if the accessToken is missing', () => {
     function MockComponent() {
@@ -137,7 +142,7 @@ describe('ContextProvider', () => {
     expect(wrapper.findByText('pass')).toBeTruthy();
   });
 
-  it('creates a new cart object', async () => {
+  it('creates a new cart object if there is no initial cart object', async () => {
     const createCartSpy = jest.spyOn(Mocks.CLIENT.checkout, 'create');
 
     function MockComponent() {
@@ -155,6 +160,33 @@ describe('ContextProvider', () => {
 
     await wait(() => {
       expect(createCartSpy).toHaveBeenCalled();
+      expect(wrapper.getByText('pass')).toBeTruthy();
+    });
+  });
+
+  it('returns an initial cart object from local storage if it exists', async () => {
+    const initialCart = {...Mocks.CART, id: 'testInitialCart'};
+    const localStorageSpy = jest.spyOn(LocalStorage, 'getInitialCart');
+    const createCartSpy = jest.spyOn(Mocks.CLIENT.checkout, 'create');
+
+    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(initialCart));
+
+    function MockComponent() {
+      const {cart} = useContext(Context);
+      const content = cart?.id === initialCart.id ? 'pass' : 'fail';
+
+      return <p>{content}</p>;
+    }
+
+    const wrapper = render(
+      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+        <MockComponent />
+      </ContextProvider>,
+    );
+
+    await wait(() => {
+      expect(createCartSpy).not.toHaveBeenCalled();
+      expect(localStorageSpy).toHaveBeenCalled();
       expect(wrapper.getByText('pass')).toBeTruthy();
     });
   });
