@@ -16,21 +16,24 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
     );
   }
 
-  const [cart, setCart] = useState<ShopifyBuy.Cart>();
+  const initialCart = LocalStorage.getInitialCart();
+  const [cart, setCart] = useState<ShopifyBuy.Cart | null>(initialCart);
   const client = ShopifyBuy.buildClient({
     storefrontAccessToken: accessToken,
     domain: `${shopName}.myshopify.com`,
   });
 
   useEffect(() => {
-    async function setupCart() {
+    async function getNewCart() {
       const newCart = await client.checkout.create();
 
       setCart(newCart);
-      LocalStorage.set(JSON.stringify(newCart), LocalStorageKeys.CART);
+      LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(newCart));
     }
 
-    setupCart();
+    if (cart == null) {
+      getNewCart();
+    }
   }, []);
 
   return (

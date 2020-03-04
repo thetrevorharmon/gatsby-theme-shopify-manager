@@ -1,2 +1,7 @@
-export const CART = 'shopify_local_store__cart';
-export const CHECKOUT_ID = 'shopify_local_store__checkout_id';
+const CART = 'shopify_local_store__cart';
+const CHECKOUT_ID = 'shopify_local_store__checkout_id';
+
+export const LocalStorageKeys = {
+  CART,
+  CHECKOUT_ID,
+};
