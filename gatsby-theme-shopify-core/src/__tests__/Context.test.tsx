@@ -3,10 +3,10 @@ import {render} from '@testing-library/react';
 import {Context} from '../Context';
 
 describe('Context', () => {
-  it('returns undefined as the default value for the client', () => {
+  it('returns null as the default value for the client', () => {
     function MockComponent() {
       const {client} = useContext(Context);
-      const content = client === undefined ? 'pass' : 'fail';
+      const content = client === null ? 'pass' : 'fail';
 
       return <p>{content}</p>;
     }
@@ -15,10 +15,10 @@ describe('Context', () => {
     expect(getAllByText('pass')).toBeTruthy();
   });
 
-  it('returns undefined as the default value for the cart', () => {
+  it('returns null as the default value for the cart', () => {
     function MockComponent() {
       const {cart} = useContext(Context);
-      const content = cart === undefined ? 'pass' : 'fail';
+      const content = cart === null ? 'pass' : 'fail';
 
       return <p>{content}</p>;
     }
@@ -32,7 +32,7 @@ describe('Context', () => {
       const {setCart} = useContext(Context);
 
       try {
-        setCart(undefined);
+        setCart(null);
       } catch (error) {
         return <p>{error.message}</p>;
       }
