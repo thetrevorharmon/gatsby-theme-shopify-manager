@@ -26,15 +26,17 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
   useEffect(() => {
     async function getNewCart() {
       const newCart = await client.checkout.create();
-
       setCart(newCart);
-      LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(newCart));
     }
 
     if (cart == null) {
       getNewCart();
     }
   }, []);
+
+  useEffect(() => {
+    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <Context.Provider
