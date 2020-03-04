@@ -14,7 +14,7 @@ function IndexPage({data}) {
   });
 
   const client = useClient();
-  const cart = useCart();
+  const {cart, setCart} = useCart();
 
   async function addToCart(shopifyId) {
     const newCart = await client.checkout.addLineItems(cart.id, [
@@ -24,7 +24,7 @@ function IndexPage({data}) {
       },
     ]);
 
-    console.log(JSON.stringify(newCart));
+    setCart(newCart);
   }
 
   const name = client != null ? client.config.domain : 'Broken!';
