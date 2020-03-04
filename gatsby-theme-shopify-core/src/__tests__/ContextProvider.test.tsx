@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {render, wait} from '@testing-library/react';
 import {Context} from '../Context';
 import {ContextProvider} from '../ContextProvider';
 import {Mocks} from '../mocks';
-import {LocalStorage, LocalStorageKeys} from '../utils';
+import {LocalStorage, LocalStorageKeys, isCart} from '../utils';
 import ShopifyBuy from 'shopify-buy';
 
 function MockComponent() {
@@ -191,8 +191,24 @@ describe('ContextProvider', () => {
     });
   });
 
-  it('saves the new cart object in local storage', async () => {
+  it('saves the cart object in local storage every time it changes', async () => {
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
+    const newCart = {
+      ...Mocks.CART,
+      id: 'newCart',
+    };
+
+    function MockComponent() {
+      const {setCart} = useContext(Context);
+
+      useEffect(() => {
+        if (isCart(newCart)) {
+          setCart(newCart);
+        }
+      }, []);
+
+      return <p>Content</p>;
+    }
 
     render(
       <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
@@ -201,8 +217,7 @@ describe('ContextProvider', () => {
     );
 
     await wait(() => {
-      expect(localStorageSpy).toHaveBeenCalled();
-      expect(window.localStorage.getItem(LocalStorageKeys.CART)).not.toBeNull();
+      expect(localStorageSpy).toHaveBeenCalledTimes(3);
     });
   });
 });

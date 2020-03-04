@@ -1,6 +1,6 @@
 export const CART = {
   id:
-    'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
+    'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
   ready: true,
   requiresShipping: true,
   note: null,
@@ -16,7 +16,7 @@ export const CART = {
     },
   },
   webUrl:
-    'https://only-down.myshopify.com/30073356332/checkouts/5ed738a960c623a6c53edfd174017143?key=8d2e76992775614dc481b742165aad73',
+    'https://only-down.myshopify.com/30073356332/checkouts/4d395496fb27ee8c53b08029f9880ba3?key=13fc7660aeb709de1baa5f4b1bf7094c',
   orderStatusUrl: null,
   taxExempt: false,
   taxesIncluded: false,
@@ -65,8 +65,8 @@ export const CART = {
     },
   },
   completedAt: null,
-  createdAt: '2020-02-28T23:10:34Z',
-  updatedAt: '2020-02-28T23:12:04Z',
+  createdAt: '2020-02-29T20:23:04Z',
+  updatedAt: '2020-03-04T01:23:20Z',
   email: null,
   discountApplications: [],
   appliedGiftCards: [],
@@ -77,7 +77,7 @@ export const CART = {
   lineItems: [
     {
       id:
-        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxNzg0NDgxMDk1NzI0MD9jaGVja291dD01ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mw==',
+        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxNzg0NDgxMDk1NzI0MD9jaGVja291dD00ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMw==',
       title: "Men's Down Jacket",
       variant: {
         id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==',
@@ -89,10 +89,7 @@ export const CART = {
           type: {
             name: 'MoneyV2',
             kind: 'OBJECT',
-            fieldBaseTypes: {
-              amount: 'Decimal',
-              currencyCode: 'CurrencyCode',
-            },
+            fieldBaseTypes: {amount: 'Decimal', currencyCode: 'CurrencyCode'},
             implementsNode: false,
           },
         },
@@ -115,21 +112,18 @@ export const CART = {
             type: {
               name: 'ProductVariantPricePair',
               kind: 'OBJECT',
-              fieldBaseTypes: {
-                compareAtPrice: 'MoneyV2',
-                price: 'MoneyV2',
-              },
+              fieldBaseTypes: {compareAtPrice: 'MoneyV2', price: 'MoneyV2'},
               implementsNode: false,
             },
             hasNextPage: false,
             hasPreviousPage: false,
             variableValues: {
               checkoutId:
-                'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
+                'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
               lineItems: [
                 {
                   variantId:
-                    'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDU0MzA2MDAxMg==',
+                    'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==',
                   quantity: 1,
                 },
               ],
@@ -269,11 +263,11 @@ export const CART = {
       hasPreviousPage: false,
       variableValues: {
         checkoutId:
-          'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
+          'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
         lineItems: [
           {
             variantId:
-              'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDU0MzA2MDAxMg==',
+              'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==',
             quantity: 1,
           },
         ],
@@ -281,7 +275,7 @@ export const CART = {
     },
     {
       id:
-        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxNzg0NTQzMDYwMDEyMD9jaGVja291dD01ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mw==',
+        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxNzg0NTQzMDYwMDEyMD9jaGVja291dD00ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMw==',
       title: "Women's Down Vest",
       variant: {
         id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDU0MzA2MDAxMg==',
@@ -293,10 +287,7 @@ export const CART = {
           type: {
             name: 'MoneyV2',
             kind: 'OBJECT',
-            fieldBaseTypes: {
-              amount: 'Decimal',
-              currencyCode: 'CurrencyCode',
-            },
+            fieldBaseTypes: {amount: 'Decimal', currencyCode: 'CurrencyCode'},
             implementsNode: false,
           },
         },
@@ -319,21 +310,18 @@ export const CART = {
             type: {
               name: 'ProductVariantPricePair',
               kind: 'OBJECT',
-              fieldBaseTypes: {
-                compareAtPrice: 'MoneyV2',
-                price: 'MoneyV2',
-              },
+              fieldBaseTypes: {compareAtPrice: 'MoneyV2', price: 'MoneyV2'},
               implementsNode: false,
             },
             hasNextPage: false,
             hasPreviousPage: false,
             variableValues: {
               checkoutId:
-                'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
+                'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
               lineItems: [
                 {
                   variantId:
-                    'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDU0MzA2MDAxMg==',
+                    'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==',
                   quantity: 1,
                 },
               ],
@@ -473,11 +461,11 @@ export const CART = {
       hasPreviousPage: {value: true},
       variableValues: {
         checkoutId:
-          'Z2lkOi8vc2hvcGlmeS9DaGVja291dC81ZWQ3MzhhOTYwYzYyM2E2YzUzZWRmZDE3NDAxNzE0Mz9rZXk9OGQyZTc2OTkyNzc1NjE0ZGM0ODFiNzQyMTY1YWFkNzM=',
+          'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
         lineItems: [
           {
             variantId:
-              'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDU0MzA2MDAxMg==',
+              'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==',
             quantity: 1,
           },
         ],
