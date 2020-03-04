@@ -1,7 +1,7 @@
 import React from 'react';
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
-import {useClient, useCart} from 'gatsby-theme-shopify-core';
+import {useClient, useCart, useCartCount} from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
   const {
@@ -15,6 +15,7 @@ function IndexPage({data}) {
 
   const client = useClient();
   const {cart, setCart} = useCart();
+  const cartCount = useCartCount();
 
   async function addToCart(shopifyId) {
     const newCart = await client.checkout.addLineItems(cart.id, [
@@ -24,7 +25,14 @@ function IndexPage({data}) {
       },
     ]);
 
+    console.log(newCart);
     setCart(newCart);
+  }
+
+  async function clearCart() {
+    setCart(null);
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
   }
 
   const name = client != null ? client.config.domain : 'Broken!';
@@ -32,6 +40,10 @@ function IndexPage({data}) {
   return (
     <div>
       <h1>Hello! Your domain is {name}</h1>
+      <h2>You have {cartCount} items in your cart</h2>
+      <button type="button" onClick={clearCart}>
+        Clear Cart
+      </button>
       {variants.map((variant) => {
         return (
           <div key={variant.shopifyId} style={{marginTop: '5em'}}>
