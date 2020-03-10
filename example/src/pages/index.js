@@ -6,6 +6,8 @@ import {
   useCart,
   useCartCount,
   useAddItemToCart,
+  useUpdateItemQuantity,
+  useGetLineItem,
 } from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
@@ -24,6 +26,18 @@ function IndexPage({data}) {
   const {setCart} = useCart();
   const cartCount = useCartCount();
   const addItemToCart = useAddItemToCart();
+  const updateItemQuantity = useUpdateItemQuantity();
+  const getLineItem = useGetLineItem();
+
+  function getQuantityFromCart(variantId) {
+    const item = getLineItem(variantId);
+
+    if (item == null) {
+      return 0;
+    }
+
+    return item.quantity;
+  }
 
   async function addToCart(shopifyId) {
     setIsLoading(true);
@@ -31,6 +45,18 @@ function IndexPage({data}) {
     const message =
       result === true
         ? 'Successfully added to cart!'
+        : 'There was a problem adding this to the cart.';
+    alert(message);
+    setIsLoading(false);
+    updateItemQuantity(shopifyId);
+  }
+
+  async function incrementInCart(shopifyId, quantity) {
+    setIsLoading(true);
+    const result = await updateItemQuantity(shopifyId, quantity);
+    const message =
+      result === true
+        ? 'Successfully added one more to cart!'
         : 'There was a problem adding this to the cart.';
     alert(message);
     setIsLoading(false);
@@ -68,6 +94,23 @@ function IndexPage({data}) {
             >
               {isLoading ? 'Loading...' : 'Add to Cart'}
             </button>
+            {getQuantityFromCart(variant.shopifyId) > 0 ? (
+              <>
+                <span>{getQuantityFromCart(variant.shopifyId)} in cart</span>
+                <button
+                  disabled={isLoading}
+                  type="button"
+                  onClick={() =>
+                    incrementInCart(
+                      variant.shopifyId,
+                      getQuantityFromCart(variant.shopifyId) + 1,
+                    )
+                  }
+                >
+                  +1
+                </button>
+              </>
+            ) : null}
           </div>
         );
       })}

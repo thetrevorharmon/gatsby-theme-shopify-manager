@@ -39,7 +39,23 @@ export const CLIENT = {
     clearLineItems: jest.fn(),
     addVariants: jest.fn(),
     removeLineItems: jest.fn(),
-    updateLineItem: jest.fn(),
+    updateLineItems: jest.fn((cartId, itemsToUpdate) => {
+      const lineItems = CART.lineItems.map((lineItem) => {
+        let newLineItem = lineItem;
+        itemsToUpdate.forEach((item: {id: string; quantity: number}) => {
+          if (item.id === lineItem.id) {
+            newLineItem = {
+              ...lineItem,
+              quantity: item.quantity,
+            };
+          }
+        });
+
+        return newLineItem;
+      });
+
+      return {...CART, lineItems: lineItems};
+    }),
   },
   shop: {},
   image: {},
