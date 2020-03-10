@@ -1,7 +1,6 @@
 import React from 'react';
-import {render, wait} from '@testing-library/react';
-import {ContextProvider} from '../ContextProvider';
-import {Mocks} from '../mocks';
+import {wait} from '@testing-library/react';
+import {Mocks, renderWithContext} from '../mocks';
 import {LocalStorage, LocalStorageKeys} from '../utils';
 import {useCartCount} from '../useCartCount';
 
@@ -17,13 +16,7 @@ afterEach(() => {
 
 describe('useCartCount()', () => {
   it('returns the total number of items in the cart, factoring in quantity per variant', async () => {
-    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
-
-    const wrapper = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
-        <MockComponent />
-      </ContextProvider>,
-    );
+    const wrapper = renderWithContext(<MockComponent />);
 
     await wait(() => {
       expect(Mocks.CART.lineItems).toHaveLength(2);
@@ -33,12 +26,9 @@ describe('useCartCount()', () => {
 
   it('returns 0 if the cart is null or empty', async () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.EMPTY_CART));
-
-    const wrapper = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
-        <MockComponent />
-      </ContextProvider>,
-    );
+    const wrapper = renderWithContext(<MockComponent />, {
+      shouldSetInitialCart: false,
+    });
 
     await wait(() => {
       expect(wrapper.getByText('0')).toBeTruthy();

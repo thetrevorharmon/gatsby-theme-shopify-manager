@@ -1,7 +1,12 @@
 import React from 'react';
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
-import {useClient, useCart, useCartCount} from 'gatsby-theme-shopify-core';
+import {
+  useClient,
+  useCart,
+  useCartCount,
+  useAddItemsToCart,
+} from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
   const {
@@ -14,19 +19,17 @@ function IndexPage({data}) {
   });
 
   const client = useClient();
-  const {cart, setCart} = useCart();
+  const {setCart} = useCart();
   const cartCount = useCartCount();
+  const addItemsToCart = useAddItemsToCart();
 
   async function addToCart(shopifyId) {
-    const newCart = await client.checkout.addLineItems(cart.id, [
-      {
-        variantId: shopifyId,
-        quantity: 1,
-      },
-    ]);
-
-    console.log(newCart);
-    setCart(newCart);
+    const result = await addItemsToCart([{variantId: shopifyId, quantity: 1}]);
+    const message =
+      result === true
+        ? 'Successfully added to cart!'
+        : 'There was a problem adding this to the cart.';
+    alert(message);
   }
 
   async function clearCart() {
