@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
 import {
   useClient,
   useCart,
   useCartCount,
-  useAddItemsToCart,
+  useAddItemToCart,
 } from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
@@ -18,18 +18,22 @@ function IndexPage({data}) {
     return {...variant, title};
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const client = useClient();
   const {setCart} = useCart();
   const cartCount = useCartCount();
-  const addItemsToCart = useAddItemsToCart();
+  const addItemToCart = useAddItemToCart();
 
   async function addToCart(shopifyId) {
-    const result = await addItemsToCart([{variantId: shopifyId, quantity: 1}]);
+    setIsLoading(true);
+    const result = await addItemToCart(shopifyId, 1);
     const message =
       result === true
         ? 'Successfully added to cart!'
         : 'There was a problem adding this to the cart.';
     alert(message);
+    setIsLoading(false);
   }
 
   async function clearCart() {
@@ -57,8 +61,12 @@ function IndexPage({data}) {
             <div style={{maxWidth: '200px'}}>
               <Image fluid={variant.image.localFile.childImageSharp.fluid} />
             </div>
-            <button type="button" onClick={() => addToCart(variant.shopifyId)}>
-              Add to Cart
+            <button
+              disabled={isLoading}
+              type="button"
+              onClick={() => addToCart(variant.shopifyId)}
+            >
+              {isLoading ? 'Loading...' : 'Add to Cart'}
             </button>
           </div>
         );
