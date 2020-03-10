@@ -29,7 +29,6 @@ describe('ContextProvider', () => {
     expect(() =>
       render(
         <ContextProvider
-          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           accessToken={null}
           shopName={Mocks.SHOP_NAME}
@@ -49,7 +48,6 @@ describe('ContextProvider', () => {
     expect(() =>
       render(
         <ContextProvider
-          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
           shopName={null}
           accessToken={Mocks.ACCESS_TOKEN}
