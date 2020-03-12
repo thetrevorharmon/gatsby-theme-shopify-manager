@@ -1,6 +1,9 @@
 export const VARIANT_ID_IN_CART =
   'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==';
 
+export const CHECKOUT_URL =
+  'https://only-down.myshopify.com/30073356332/checkouts/4d395496fb27ee8c53b08029f9880ba3?key=13fc7660aeb709de1baa5f4b1bf7094c';
+
 export const CART = {
   id:
     'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
@@ -18,8 +21,7 @@ export const CART = {
       implementsNode: false,
     },
   },
-  webUrl:
-    'https://only-down.myshopify.com/30073356332/checkouts/4d395496fb27ee8c53b08029f9880ba3?key=13fc7660aeb709de1baa5f4b1bf7094c',
+  webUrl: CHECKOUT_URL,
   orderStatusUrl: null,
   taxExempt: false,
   taxesIncluded: false,
