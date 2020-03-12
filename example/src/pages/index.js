@@ -8,6 +8,7 @@ import {
   useAddItemToCart,
   useUpdateItemQuantity,
   useGetLineItem,
+  useCheckoutUrl,
 } from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
@@ -23,6 +24,7 @@ function IndexPage({data}) {
   const [isLoading, setIsLoading] = useState(false);
 
   const client = useClient();
+  const checkoutUrl = useCheckoutUrl();
   const {setCart} = useCart();
   const cartCount = useCartCount();
   const addItemToCart = useAddItemToCart();
@@ -74,9 +76,19 @@ function IndexPage({data}) {
     <div>
       <h1>Hello! Your domain is {name}</h1>
       <h2>You have {cartCount} items in your cart</h2>
-      <button type="button" onClick={clearCart}>
-        Clear Cart
-      </button>
+      {checkoutUrl != null ? (
+        <div>
+          <a href={checkoutUrl} target="_blank" rel="noopener noreferrer">
+            Checkout
+          </a>
+        </div>
+      ) : null}
+      <br />
+      <div>
+        <button type="button" onClick={clearCart}>
+          Clear Cart
+        </button>
+      </div>
       {variants.map((variant) => {
         return (
           <div key={variant.shopifyId} style={{marginTop: '5em'}}>
