@@ -1,7 +1,7 @@
 import React from 'react';
 import {wait} from '@testing-library/react';
-import {Mocks, renderWithContext} from '../mocks';
-import {LocalStorage, LocalStorageKeys} from '../utils';
+import {Mocks, renderWithContext} from '../../mocks';
+import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useGetLineItem} from '../useGetLineItem';
 
 function MockComponent({variantId}: {variantId: string}) {
