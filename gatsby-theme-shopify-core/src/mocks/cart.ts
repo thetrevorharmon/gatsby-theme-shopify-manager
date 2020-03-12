@@ -1,3 +1,6 @@
+export const VARIANT_ID_IN_CART =
+  'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTc4NDQ4MTA5NTcyNA==';
+
 export const CART = {
   id:
     'Z2lkOi8vc2hvcGlmeS9DaGVja291dC80ZDM5NTQ5NmZiMjdlZThjNTNiMDgwMjlmOTg4MGJhMz9rZXk9MTNmYzc2NjBhZWI3MDlkZTFiYWE1ZjRiMWJmNzA5NGM=',
