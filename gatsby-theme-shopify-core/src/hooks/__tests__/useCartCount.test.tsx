@@ -1,7 +1,7 @@
 import React from 'react';
 import {wait} from '@testing-library/react';
-import {Mocks, renderWithContext} from '../mocks';
-import {LocalStorage, LocalStorageKeys} from '../utils';
+import {Mocks, renderWithContext} from '../../mocks';
+import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useCartCount} from '../useCartCount';
 
 function MockComponent() {

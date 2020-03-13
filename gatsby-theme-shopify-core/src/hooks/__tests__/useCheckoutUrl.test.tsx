@@ -1,6 +1,6 @@
 import React from 'react';
-import {Mocks, renderWithContext} from '../mocks';
-import {LocalStorage, LocalStorageKeys} from '../utils';
+import {Mocks, renderWithContext} from '../../mocks';
+import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useCheckoutUrl} from '../useCheckoutUrl';
 
 function MockComponent() {
