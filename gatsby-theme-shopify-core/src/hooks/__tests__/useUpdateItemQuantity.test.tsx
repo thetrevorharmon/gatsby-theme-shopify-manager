@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {wait, fireEvent} from '@testing-library/react';
-import {Mocks, renderWithContext} from '../mocks';
-import {LocalStorage, LocalStorageKeys} from '../utils';
+import {Mocks, renderWithContext} from '../../mocks';
+import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useUpdateItemQuantity} from '../useUpdateItemQuantity';
 
 function MockComponent({

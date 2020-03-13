@@ -1,5 +1,5 @@
 import {useAddItemsToCart} from './useAddItemsToCart';
-import {AttributeInput} from './types';
+import {AttributeInput} from '../types';
 
 export function useAddItemToCart() {
   const addItemsToCart = useAddItemsToCart();
