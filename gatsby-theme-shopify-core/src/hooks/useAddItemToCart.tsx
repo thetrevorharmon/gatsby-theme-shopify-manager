@@ -4,7 +4,7 @@ import {AttributeInput} from '../types';
 export function useAddItemToCart() {
   const addItemsToCart = useAddItemsToCart();
 
-  return function addItemToCart(
+  async function addItemToCart(
     variantId: number | string,
     quantity: number,
     customAttributes?: AttributeInput[],
@@ -12,5 +12,7 @@ export function useAddItemToCart() {
     const item = [{variantId, quantity, customAttributes}];
 
     return addItemsToCart(item);
-  };
+  }
+
+  return addItemToCart;
 }

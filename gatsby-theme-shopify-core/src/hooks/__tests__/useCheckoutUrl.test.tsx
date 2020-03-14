@@ -1,13 +1,6 @@
-import React from 'react';
-import {Mocks, renderWithContext} from '../../mocks';
 import {LocalStorage, LocalStorageKeys} from '../../utils';
+import {Mocks, renderHookWithContext} from '../../mocks';
 import {useCheckoutUrl} from '../useCheckoutUrl';
-
-function MockComponent() {
-  const checkoutUrl = useCheckoutUrl();
-  const content = checkoutUrl == null ? 'empty' : checkoutUrl;
-  return <p>{content}</p>;
-}
 
 afterEach(() => {
   LocalStorage.set(LocalStorageKeys.CART, '');
@@ -16,7 +9,7 @@ afterEach(() => {
 
 describe('useCheckoutUrl()', () => {
   it('returns the checkout URL from the cart', async () => {
-    const wrapper = renderWithContext(<MockComponent />);
-    expect(wrapper.getByText(Mocks.CHECKOUT_URL)).toBeTruthy();
+    const {result} = renderHookWithContext(() => useCheckoutUrl());
+    expect(result.current).toBe(Mocks.CHECKOUT_URL);
   });
 });

@@ -12,33 +12,24 @@ export function useUpdateItemQuantity() {
     quantity: number,
   ) {
     if (variantId == null) {
-      console.error('Must provide a variant id');
-      return false;
+      throw new Error('Must provide a variant id');
     }
 
     if (quantity == null || Number(quantity) < 0) {
-      console.error('Quantity must be greater than 0');
-      return false;
+      throw new Error('Quantity must be greater than 0');
     }
 
     const lineItem = getLineItem(variantId);
     if (lineItem == null) {
-      console.error(`Item with variantId ${variantId} not in cart`);
-      return false;
+      throw new Error(`Item with variantId ${variantId} not in cart`);
     }
 
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      const newCart = await client.checkout.updateLineItems(cart.id, [
-        {id: lineItem.id, quantity},
-      ]);
-      setCart(newCart);
-      return true;
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    const newCart = await client.checkout.updateLineItems(cart.id, [
+      {id: lineItem.id, quantity},
+    ]);
+    setCart(newCart);
   }
 
   return updateItemQuantity;
