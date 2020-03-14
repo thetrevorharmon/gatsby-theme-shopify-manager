@@ -45,35 +45,22 @@ function IndexPage({data}) {
 
   async function addToCart(shopifyId) {
     setIsLoading(true);
-    const result = await addItemToCart(shopifyId, 1);
-    const message =
-      result === true
-        ? 'Successfully added to cart!'
-        : 'There was a problem adding this to the cart.';
-    alert(message);
+    await addItemToCart(shopifyId, 1);
+    alert('Successfully added to cart!');
     setIsLoading(false);
   }
 
   async function incrementInCart(shopifyId, quantity) {
-    console.log('was thsi called?');
     setIsLoading(true);
-    const result = await updateItemQuantity(shopifyId, quantity);
-    const message =
-      result === true
-        ? 'Successfully added one more to cart!'
-        : 'There was a problem adding this to the cart.';
-    alert(message);
+    await updateItemQuantity(shopifyId, quantity);
+    alert('Successfully added one more to cart!');
     setIsLoading(false);
   }
 
   async function removeFromCart(shopifyId) {
     setIsLoading(true);
-    const result = await removeItemFromCart(shopifyId);
-    const message =
-      result === true
-        ? 'Removed this from your cart'
-        : 'There was a problem removing this from the cart.';
-    alert(message);
+    await removeItemFromCart(shopifyId);
+    alert('Removed this from your cart');
     setIsLoading(false);
   }
 
