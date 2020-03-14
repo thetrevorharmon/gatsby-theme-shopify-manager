@@ -38,8 +38,19 @@ export const CLIENT = {
     }),
     clearLineItems: jest.fn(),
     addVariants: jest.fn(),
-    removeLineItems: jest.fn(),
-    updateLineItems: jest.fn((cartId, itemsToUpdate) => {
+    removeLineItems: jest.fn((_, lineItemIds) => {
+      const newLineItems = CART.lineItems
+        .map((lineItem) => {
+          if (lineItemIds.includes(lineItem.id)) {
+            return null;
+          }
+          return lineItem;
+        })
+        .filter(Boolean);
+
+      return {...CART, lineItems: newLineItems};
+    }),
+    updateLineItems: jest.fn((_, itemsToUpdate) => {
       const lineItems = CART.lineItems.map((lineItem) => {
         let newLineItem = lineItem;
         itemsToUpdate.forEach((item: {id: string; quantity: number}) => {

@@ -9,6 +9,7 @@ import {
   useUpdateItemQuantity,
   useGetLineItem,
   useCheckoutUrl,
+  useRemoveItemFromCart,
 } from 'gatsby-theme-shopify-core';
 
 function IndexPage({data}) {
@@ -28,6 +29,7 @@ function IndexPage({data}) {
   const {setCart} = useCart();
   const cartCount = useCartCount();
   const addItemToCart = useAddItemToCart();
+  const removeItemFromCart = useRemoveItemFromCart();
   const updateItemQuantity = useUpdateItemQuantity();
   const getLineItem = useGetLineItem();
 
@@ -50,16 +52,27 @@ function IndexPage({data}) {
         : 'There was a problem adding this to the cart.';
     alert(message);
     setIsLoading(false);
-    updateItemQuantity(shopifyId);
   }
 
   async function incrementInCart(shopifyId, quantity) {
+    console.log('was thsi called?');
     setIsLoading(true);
     const result = await updateItemQuantity(shopifyId, quantity);
     const message =
       result === true
         ? 'Successfully added one more to cart!'
         : 'There was a problem adding this to the cart.';
+    alert(message);
+    setIsLoading(false);
+  }
+
+  async function removeFromCart(shopifyId) {
+    setIsLoading(true);
+    const result = await removeItemFromCart(shopifyId);
+    const message =
+      result === true
+        ? 'Removed this from your cart'
+        : 'There was a problem removing this from the cart.';
     alert(message);
     setIsLoading(false);
   }
@@ -120,6 +133,13 @@ function IndexPage({data}) {
                   }
                 >
                   +1
+                </button>
+                <button
+                  disabled={isLoading}
+                  type="button"
+                  onClick={() => removeFromCart(variant.shopifyId)}
+                >
+                  Remove
                 </button>
               </>
             ) : null}

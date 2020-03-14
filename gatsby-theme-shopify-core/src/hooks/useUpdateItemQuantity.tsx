@@ -16,13 +16,12 @@ export function useUpdateItemQuantity() {
       return false;
     }
 
-    if (Number(quantity) < 1) {
-      console.error('Quantity must be greater than 1');
+    if (quantity == null || Number(quantity) < 0) {
+      console.error('Quantity must be greater than 0');
       return false;
     }
 
     const lineItem = getLineItem(variantId);
-
     if (lineItem == null) {
       console.error(`Item with variantId ${variantId} not in cart`);
       return false;

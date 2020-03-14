@@ -89,7 +89,22 @@ describe('useUpdateItemQuantity()', () => {
 
     expect(wrapper.getByText(/Result: false/)).toBeTruthy();
     expect(mockConsoleError).toHaveBeenCalledWith(
-      'Quantity must be greater than 1',
+      'Quantity must be greater than 0',
+    );
+  });
+
+  it('returns false if quantity less than 0 is provided', async () => {
+    const wrapper = renderWithContext(
+      // @ts-ignore
+      <MockComponent variantId={Mocks.VARIANT_ID_IN_CART} quantity={-1} />,
+    );
+    await wait(() => {
+      fireEvent.click(wrapper.getByText(/Update Quantity/));
+    });
+
+    expect(wrapper.getByText(/Result: false/)).toBeTruthy();
+    expect(mockConsoleError).toHaveBeenCalledWith(
+      'Quantity must be greater than 0',
     );
   });
 
