@@ -1,101 +1,69 @@
-import React, {useState} from 'react';
-import {wait, fireEvent} from '@testing-library/react';
-import {renderWithContext} from '../../mocks';
+import {act} from '@testing-library/react-hooks';
+import {Mocks, getCurrentCart, renderHookWithContext} from '../../mocks';
 import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useAddItemToCart} from '../useAddItemToCart';
-import {AttributeInput} from '../../types';
-
-function MockComponent({
-  variantId,
-  quantity,
-  customAttributes,
-}: {
-  variantId: string | number;
-  quantity: number;
-  customAttributes?: AttributeInput[];
-}) {
-  const addItemToCart = useAddItemToCart();
-  const [result, setResult] = useState<boolean | null>(null);
-
-  async function addItem() {
-    const newResult = await addItemToCart(
-      variantId,
-      quantity,
-      customAttributes,
-    );
-    setResult(newResult);
-  }
-
-  return (
-    <>
-      <button type="button" onClick={addItem}>
-        Add to Cart
-      </button>
-      <p>Result: {String(result)}</p>
-    </>
-  );
-}
-
-const originalError = console.error;
-const mockConsoleError = jest.fn();
-
-beforeEach(() => {
-  console.error = mockConsoleError;
-});
 
 afterEach(() => {
   LocalStorage.set(LocalStorageKeys.CART, '');
   jest.clearAllMocks();
-  console.error = originalError;
 });
 
 describe('useAddItemToCart()', () => {
-  it('returns true if the item is added to the cart', async () => {
-    const wrapper = renderWithContext(
-      <MockComponent variantId={'some_variant_id'} quantity={1} />,
-    );
-    await wait(() => {
-      fireEvent.click(wrapper.getByText(/Add to Cart/));
-    });
-
-    expect(wrapper.getByText(/Result: true/)).toBeTruthy();
-  });
-
-  it('updates the cart state if the items are added to the cart', async () => {
+  it('adds the item to the cart', async () => {
+    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
-    const wrapper = renderWithContext(
-      <MockComponent variantId="newVariantId" quantity={1} />,
-    );
-    await wait(() => {
-      fireEvent.click(wrapper.getByText(/Add to Cart/));
-    });
 
-    const newCart = JSON.parse(
-      LocalStorage.get(LocalStorageKeys.CART) || '',
-    ) as ShopifyBuy.Cart;
+    const {result, waitForNextUpdate} = renderHookWithContext(() =>
+      useAddItemToCart(),
+    );
+
+    act(() => {
+      result.current('newVariantId', 1);
+    });
+    await waitForNextUpdate();
+
+    const cart = getCurrentCart();
 
     // @ts-ignore
-    expect(newCart.lineItems.slice(-1)[0].variantId).toBe('newVariantId');
+    expect(cart.lineItems.slice(-1)[0].variantId).toBe('newVariantId');
     expect(localStorageSpy).toHaveBeenCalledTimes(3);
   });
 
-  it('returns false if there is no variantId passed to the function', async () => {
-    // @ts-ignore
-    const wrapper = renderWithContext(<MockComponent quantity={1} />);
-    await wait(() => {
-      fireEvent.click(wrapper.getByText(/Add to Cart/));
-    });
+  it('throws an error if the given line item has no variant id', async () => {
+    const {result} = renderHookWithContext(() => useAddItemToCart());
 
-    expect(wrapper.getByText(/Result: false/)).toBeTruthy();
+    // @ts-ignore
+    await expect(result.current()).rejects.toThrow('Missing variantId in item');
   });
 
-  it('returns false if there is no quantity passed to the function', async () => {
-    // @ts-ignore
-    const wrapper = renderWithContext(<MockComponent variantId="someId" />);
-    await wait(() => {
-      fireEvent.click(wrapper.getByText(/Add to Cart/));
-    });
+  it('throws an error if the given line item has no quantity', async () => {
+    const {result} = renderHookWithContext(() => useAddItemToCart());
 
-    expect(wrapper.getByText(/Result: false/)).toBeTruthy();
+    // @ts-ignore
+    await expect(result.current('some_id')).rejects.toThrow(
+      'Missing quantity in item with variant id: some_id',
+    );
+  });
+
+  it('throws an error if the given line item has a quantity that is not numeric', async () => {
+    const {result} = renderHookWithContext(() => useAddItemToCart());
+
+    await expect(
+      // @ts-ignore
+      result.current('some_id', 'one'),
+    ).rejects.toThrow(
+      'Quantity is not a number in item with variant id: some_id',
+    );
+  });
+
+  it('throws an error if the given line item has a quantity that is less than one', async () => {
+    const {result} = renderHookWithContext(() => useAddItemToCart());
+
+    await expect(
+      // @ts-ignore
+      result.current('some_id', 0),
+    ).rejects.toThrow(
+      'Quantity must not be less than one in item with variant id: some_id',
+    );
   });
 });

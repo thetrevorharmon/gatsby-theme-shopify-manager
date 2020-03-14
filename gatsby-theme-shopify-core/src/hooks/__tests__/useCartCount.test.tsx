@@ -1,13 +1,6 @@
-import React from 'react';
-import {wait} from '@testing-library/react';
-import {Mocks, renderWithContext} from '../../mocks';
+import {Mocks, renderHookWithContext} from '../../mocks';
 import {LocalStorage, LocalStorageKeys} from '../../utils';
 import {useCartCount} from '../useCartCount';
-
-function MockComponent() {
-  const count = useCartCount();
-  return <p>{count}</p>;
-}
 
 afterEach(() => {
   LocalStorage.set(LocalStorageKeys.CART, '');
@@ -16,22 +9,24 @@ afterEach(() => {
 
 describe('useCartCount()', () => {
   it('returns the total number of items in the cart, factoring in quantity per variant', async () => {
-    const wrapper = renderWithContext(<MockComponent />);
+    const {result} = renderHookWithContext(() => useCartCount());
 
-    await wait(() => {
-      expect(Mocks.CART.lineItems).toHaveLength(2);
-      expect(wrapper.getByText('3')).toBeTruthy();
-    });
+    const lineItemVariantQuantity = Mocks.CART.lineItems.reduce(
+      (quantity, lineItem) => {
+        return lineItem.quantity + quantity;
+      },
+      0,
+    );
+
+    expect(result.current).toBe(lineItemVariantQuantity);
   });
 
   it('returns 0 if the cart is null or empty', async () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.EMPTY_CART));
-    const wrapper = renderWithContext(<MockComponent />, {
+    const {result} = renderHookWithContext(() => useCartCount(), {
       shouldSetInitialCart: false,
     });
 
-    await wait(() => {
-      expect(wrapper.getByText('0')).toBeTruthy();
-    });
+    expect(result.current).toBe(0);
   });
 });
