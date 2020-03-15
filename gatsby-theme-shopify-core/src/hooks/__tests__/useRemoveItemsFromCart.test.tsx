@@ -13,7 +13,7 @@ describe('useRemoveItemsFromCart()', () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
 
-    const {result, waitForNextUpdate} = renderHookWithContext(() =>
+    const {result, waitForNextUpdate} = await renderHookWithContext(() =>
       useRemoveItemsFromCart(),
     );
 
@@ -39,11 +39,13 @@ describe('useRemoveItemsFromCart()', () => {
 
     expect(findInLineItems(Mocks.VARIANT_ID_IN_CART)).toHaveLength(0);
     expect(cart.lineItems).toHaveLength(Mocks.CART.lineItems.length - 1);
-    expect(localStorageSpy).toHaveBeenCalledTimes(3);
+    expect(localStorageSpy).toHaveBeenCalledTimes(4);
   });
 
   it('throws an error if there are no variant Ids passed to the function', async () => {
-    const {result} = renderHookWithContext(() => useRemoveItemsFromCart());
+    const {result} = await renderHookWithContext(() =>
+      useRemoveItemsFromCart(),
+    );
 
     // @ts-ignore
     await expect(result.current([])).rejects.toThrow(
@@ -52,7 +54,9 @@ describe('useRemoveItemsFromCart()', () => {
   });
 
   it('throws an error if a given variant Id is not found in the cart', async () => {
-    const {result} = renderHookWithContext(() => useRemoveItemsFromCart());
+    const {result} = await renderHookWithContext(() =>
+      useRemoveItemsFromCart(),
+    );
 
     // @ts-ignore
     await expect(

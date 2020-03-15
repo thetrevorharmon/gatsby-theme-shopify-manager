@@ -9,7 +9,7 @@ afterEach(() => {
 
 describe('useCartCount()', () => {
   it('returns the total number of items in the cart, factoring in quantity per variant', async () => {
-    const {result} = renderHookWithContext(() => useCartCount());
+    const {result} = await renderHookWithContext(() => useCartCount());
 
     const lineItemVariantQuantity = Mocks.CART.lineItems.reduce(
       (quantity, lineItem) => {
@@ -22,8 +22,12 @@ describe('useCartCount()', () => {
   });
 
   it('returns 0 if the cart is null or empty', async () => {
+    (Mocks.CLIENT.checkout.fetch as jest.Mock).mockImplementationOnce(
+      () => Mocks.EMPTY_CART,
+    );
+
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.EMPTY_CART));
-    const {result} = renderHookWithContext(() => useCartCount(), {
+    const {result} = await renderHookWithContext(() => useCartCount(), {
       shouldSetInitialCart: false,
     });
 

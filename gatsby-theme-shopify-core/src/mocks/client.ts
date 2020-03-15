@@ -5,7 +5,7 @@ export const CLIENT = {
   collection: {},
   checkout: {
     create: jest.fn(() => CART),
-    fetch: jest.fn(),
+    fetch: jest.fn(() => CART),
     addLineItems: jest.fn((cartId, items) => {
       return {...CART, lineItems: [...CART.lineItems, ...items]};
     }),
