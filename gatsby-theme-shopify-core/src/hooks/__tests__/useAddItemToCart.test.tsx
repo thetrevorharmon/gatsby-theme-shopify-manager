@@ -13,7 +13,7 @@ describe('useAddItemToCart()', () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
 
-    const {result, waitForNextUpdate} = renderHookWithContext(() =>
+    const {result, waitForNextUpdate} = await renderHookWithContext(() =>
       useAddItemToCart(),
     );
 
@@ -26,18 +26,18 @@ describe('useAddItemToCart()', () => {
 
     // @ts-ignore
     expect(cart.lineItems.slice(-1)[0].variantId).toBe('newVariantId');
-    expect(localStorageSpy).toHaveBeenCalledTimes(3);
+    expect(localStorageSpy).toHaveBeenCalledTimes(4);
   });
 
   it('throws an error if the given line item has no variant id', async () => {
-    const {result} = renderHookWithContext(() => useAddItemToCart());
+    const {result} = await renderHookWithContext(() => useAddItemToCart());
 
     // @ts-ignore
     await expect(result.current()).rejects.toThrow('Missing variantId in item');
   });
 
   it('throws an error if the given line item has no quantity', async () => {
-    const {result} = renderHookWithContext(() => useAddItemToCart());
+    const {result} = await renderHookWithContext(() => useAddItemToCart());
 
     // @ts-ignore
     await expect(result.current('some_id')).rejects.toThrow(
@@ -46,7 +46,7 @@ describe('useAddItemToCart()', () => {
   });
 
   it('throws an error if the given line item has a quantity that is not numeric', async () => {
-    const {result} = renderHookWithContext(() => useAddItemToCart());
+    const {result} = await renderHookWithContext(() => useAddItemToCart());
 
     await expect(
       // @ts-ignore
@@ -57,7 +57,7 @@ describe('useAddItemToCart()', () => {
   });
 
   it('throws an error if the given line item has a quantity that is less than one', async () => {
-    const {result} = renderHookWithContext(() => useAddItemToCart());
+    const {result} = await renderHookWithContext(() => useAddItemToCart());
 
     await expect(
       // @ts-ignore

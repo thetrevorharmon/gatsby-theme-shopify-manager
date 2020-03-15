@@ -29,8 +29,27 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
       setCart(newCart);
     }
 
+    async function refreshExistingCart(cartId: string) {
+      try {
+        const refreshedCart = await client.checkout.fetch(cartId);
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        const cartHasBeenPurchased = refreshedCart.completedAt != null;
+        if (cartHasBeenPurchased) {
+          getNewCart();
+        } else {
+          setCart(refreshedCart);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     if (cart == null) {
       getNewCart();
+    } else {
+      refreshExistingCart(String(cart.id));
     }
   }, []);
 
