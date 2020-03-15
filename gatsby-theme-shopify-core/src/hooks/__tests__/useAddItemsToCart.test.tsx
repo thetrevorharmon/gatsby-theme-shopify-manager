@@ -13,7 +13,7 @@ describe('useAddItemsToCart()', () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
 
-    const {result, waitForNextUpdate} = renderHookWithContext(() =>
+    const {result, waitForNextUpdate} = await renderHookWithContext(() =>
       useAddItemsToCart(),
     );
 
@@ -31,11 +31,11 @@ describe('useAddItemsToCart()', () => {
 
     // @ts-ignore
     expect(cart.lineItems.slice(-1)[0].variantId).toBe('newVariantId');
-    expect(localStorageSpy).toHaveBeenCalledTimes(3);
+    expect(localStorageSpy).toHaveBeenCalledTimes(4);
   });
 
   it('throws an error if there are no line items', async () => {
-    const {result} = renderHookWithContext(() => useAddItemsToCart());
+    const {result} = await renderHookWithContext(() => useAddItemsToCart());
 
     await expect(result.current([])).rejects.toThrow(
       'Must include at least one line item, empty line items found',
@@ -43,7 +43,7 @@ describe('useAddItemsToCart()', () => {
   });
 
   it('throws an error if the given line item has no variant id', async () => {
-    const {result} = renderHookWithContext(() => useAddItemsToCart());
+    const {result} = await renderHookWithContext(() => useAddItemsToCart());
 
     // @ts-ignore
     await expect(result.current([{quantity: 1}])).rejects.toThrow(
@@ -52,7 +52,7 @@ describe('useAddItemsToCart()', () => {
   });
 
   it('throws an error if the given line item has no quantity', async () => {
-    const {result} = renderHookWithContext(() => useAddItemsToCart());
+    const {result} = await renderHookWithContext(() => useAddItemsToCart());
 
     // @ts-ignore
     await expect(result.current([{variantId: 'some_id'}])).rejects.toThrow(
@@ -61,7 +61,7 @@ describe('useAddItemsToCart()', () => {
   });
 
   it('throws an error if the given line item has a quantity that is not numeric', async () => {
-    const {result} = renderHookWithContext(() => useAddItemsToCart());
+    const {result} = await renderHookWithContext(() => useAddItemsToCart());
 
     await expect(
       // @ts-ignore
@@ -72,7 +72,7 @@ describe('useAddItemsToCart()', () => {
   });
 
   it('throws an error if the given line item has a quantity that is less than one', async () => {
-    const {result} = renderHookWithContext(() => useAddItemsToCart());
+    const {result} = await renderHookWithContext(() => useAddItemsToCart());
 
     await expect(
       // @ts-ignore

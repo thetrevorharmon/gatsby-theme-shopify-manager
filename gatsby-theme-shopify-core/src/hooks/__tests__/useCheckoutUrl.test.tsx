@@ -9,7 +9,8 @@ afterEach(() => {
 
 describe('useCheckoutUrl()', () => {
   it('returns the checkout URL from the cart', async () => {
-    const {result} = renderHookWithContext(() => useCheckoutUrl());
+    const {result} = await renderHookWithContext(() => useCheckoutUrl());
+
     expect(result.current).toBe(Mocks.CHECKOUT_URL);
   });
 });

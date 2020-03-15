@@ -11,7 +11,7 @@ afterEach(() => {
 describe('useUpdateItemQuantity()', () => {
   it('updates the quantity for an item given a variant id', async () => {
     const newQuantity = 2;
-    const {result, waitForNextUpdate} = renderHookWithContext(() =>
+    const {result, waitForNextUpdate} = await renderHookWithContext(() =>
       useUpdateItemQuantity(),
     );
 
@@ -30,7 +30,7 @@ describe('useUpdateItemQuantity()', () => {
   });
 
   it('throws an error if no variantId is provided', async () => {
-    const {result} = renderHookWithContext(() => useUpdateItemQuantity());
+    const {result} = await renderHookWithContext(() => useUpdateItemQuantity());
 
     // @ts-ignore
     await expect(result.current(null, 2)).rejects.toThrow(
@@ -39,7 +39,7 @@ describe('useUpdateItemQuantity()', () => {
   });
 
   it('throws an error if no quantity is provided', async () => {
-    const {result} = renderHookWithContext(() => useUpdateItemQuantity());
+    const {result} = await renderHookWithContext(() => useUpdateItemQuantity());
 
     await expect(
       // @ts-ignore
@@ -48,7 +48,7 @@ describe('useUpdateItemQuantity()', () => {
   });
 
   it('throws an error if quantity less than 0 is provided', async () => {
-    const {result} = renderHookWithContext(() => useUpdateItemQuantity());
+    const {result} = await renderHookWithContext(() => useUpdateItemQuantity());
 
     await expect(result.current(Mocks.VARIANT_ID_IN_CART, -1)).rejects.toThrow(
       'Quantity must be greater than 0',
@@ -56,7 +56,7 @@ describe('useUpdateItemQuantity()', () => {
   });
 
   it('throws an error if a variant id is provided that cannot be found', async () => {
-    const {result} = renderHookWithContext(() => useUpdateItemQuantity());
+    const {result} = await renderHookWithContext(() => useUpdateItemQuantity());
 
     await expect(result.current('some_fake_id', 2)).rejects.toThrow(
       'Item with variantId some_fake_id not in cart',

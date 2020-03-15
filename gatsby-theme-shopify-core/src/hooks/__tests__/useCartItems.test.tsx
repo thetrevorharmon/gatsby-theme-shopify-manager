@@ -10,14 +10,18 @@ afterEach(() => {
 describe('useCartItems()', () => {
   it('returns the items in the cart', async () => {
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
-    const {result} = renderHookWithContext(() => useCartItems());
+    const {result} = await renderHookWithContext(() => useCartItems());
 
     expect(result.current).toHaveLength(Mocks.CART.lineItems.length);
   });
 
   it('returns an empty array if the cart is null or empty', async () => {
+    (Mocks.CLIENT.checkout.fetch as jest.Mock).mockImplementationOnce(
+      () => Mocks.EMPTY_CART,
+    );
+
     LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.EMPTY_CART));
-    const {result} = renderHookWithContext(() => useCartItems(), {
+    const {result} = await renderHookWithContext(() => useCartItems(), {
       shouldSetInitialCart: false,
     });
 
