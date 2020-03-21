@@ -1,7 +1,8 @@
-import {useCart} from './useCart';
+import {useContext} from 'react';
+import {Context} from '../Context';
 
 export function useCheckoutUrl(): string | null {
-  const {cart} = useCart();
+  const {cart} = useContext(Context);
   if (cart == null) {
     return null;
   }
