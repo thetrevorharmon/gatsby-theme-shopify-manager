@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {graphql} from 'gatsby';
 import Image from 'gatsby-image';
 import {
-  useClient,
-  useCart,
+  useClientUnsafe,
   useCartCount,
+  useSetCartUnsafe,
   useAddItemToCart,
   useUpdateItemQuantity,
   useGetLineItem,
@@ -24,9 +24,9 @@ function IndexPage({data}) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const client = useClient();
+  const client = useClientUnsafe();
   const checkoutUrl = useCheckoutUrl();
-  const {setCart} = useCart();
+  const setCart = useSetCartUnsafe();
   const cartCount = useCartCount();
   const addItemToCart = useAddItemToCart();
   const removeItemFromCart = useRemoveItemFromCart();
