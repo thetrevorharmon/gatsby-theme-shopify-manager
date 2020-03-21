@@ -7,12 +7,12 @@
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
     "pretty": "prettier --write \"**/*.{ts,tsx,js,css,scss}\"",
-    "type-check": "yarn workspace gatsby-theme-shopify-core tsc --noEmit",
+    "type-check": "yarn workspace gatsby-theme-shopify-manager tsc --noEmit",
     "build-example": "yarn workspace example build",
     "check-all": "yarn lint && yarn type-check && yarn test-build"
   },
   "workspaces": [
-    "gatsby-theme-shopify-core",
+    "gatsby-theme-shopify-manager",
     "example"
   ],
   "devDependencies": {

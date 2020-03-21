@@ -1,6 +1,4 @@
-# gatsby-source-shopify-core
-
-🛒🌎
+# gatsby-source-shopify-manager
 
 ## Getting started
 

@@ -10,7 +10,7 @@ import {
   useGetLineItem,
   useCheckoutUrl,
   useRemoveItemFromCart,
-} from 'gatsby-theme-shopify-core';
+} from 'gatsby-theme-shopify-manager';
 
 function IndexPage({data}) {
   const {

@@ -8,7 +8,7 @@ interface CoreOptionsQueryShape {
 export function useCoreOptions() {
   const {coreOptions}: CoreOptionsQueryShape = useStaticQuery(graphql`
     query CoreOptionsQuery {
-      coreOptions(id: {eq: "gatsby-theme-shopify-core"}) {
+      coreOptions(id: {eq: "gatsby-theme-shopify-manager"}) {
         shopName
         accessToken
       }
