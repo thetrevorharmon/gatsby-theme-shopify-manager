@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-shopify-manager",
   "description": "The easiest way to build a Shopify shop on Gatsby.",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -23,5 +23,19 @@
     "@types/shopify-buy": "^1.4.3",
     "gatsby-plugin-typescript": "^2.1.27",
     "typescript": "^3.7.5"
+  },
+  "keywords": [
+    "gatsby",
+    "shopify"
+  ],
+  "author": "Trevor Harmon <thetrevorharmon@gmail.com> (http://thetrevorhamon.com)",
+  "bugs": {
+    "url": "https://github.com/thetrevorharmon/gatsby-theme-shopify-manager/issues"
+  },
+  "homepage": "https://github.com/thetrevorharmon/gatsby-theme-shopify-manager#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thetrevorharmon/gatsby-theme-shopify-manager.git",
+    "directory": "gatsby-theme-shopify-manager"
   }
 }
