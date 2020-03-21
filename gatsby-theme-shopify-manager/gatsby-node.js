@@ -36,7 +36,7 @@ exports.sourceNodes = (
 
   createNode({
     ...coreOptions,
-    id: `gatsby-theme-shopify-core`,
+    id: `gatsby-theme-shopify-manager`,
     parent: null,
     children: [],
     internal: {
