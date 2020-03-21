@@ -1,4 +1,4 @@
-import {Mocks} from '../../gatsby-theme-shopify-core/src/mocks';
+import {Mocks} from '../../gatsby-theme-shopify-manager/src/mocks';
 const shopifyBuy = jest.requireActual('shopify-buy');
 
 shopifyBuy.buildClient = ({storefrontAccessToken, domain}) => {
