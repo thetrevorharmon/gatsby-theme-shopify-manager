@@ -1,0 +1,92 @@
+import {Alert} from 'theme-ui';
+import {SimpleCartExample, ExampleWithCode} from '../components';
+import './highlighting.css';
+
+<Alert variant="callout">🚧 Pardon our dust, these docs are currently under construction 🚧</Alert>
+
+# gatsby-theme-shopify-manager
+
+> The easiest way to start a Shopify shop on Gatsby.
+
+Gatsby-theme-shopify-manager is an opinionated Gatsby theme that does the heavy lifting for you in setting up a Shopify store on Gatsby. It provides a foundation to build a fast Shopify shop on top of.
+
+> Want to see this in action? _This page_ is a working example, as well as documentation. Read on to see it!
+
+## Getting Started
+
+To start using the theme, install it with your package manager of choice:
+
+```bash
+yarn add gatsby-theme-shopify-manager
+```
+
+To start using it, open your `gatsby-config` file and include your Shop name and access token from the Storefront API.
+
+```javascript
+{
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    shopName: 'your shop name',
+    accessToken: 'your storefront API access token',
+  },
+},
+```
+
+When you use this theme, it automatically includes `gatsby-source-shopify` and sets it up for you. These options are passed to that package, as well as used internally to create a connection to Shopify using [shopify-buy](https://shopify.github.io/js-buy-sdk/). Once you've set up the plugin, you're ready to start using
+
+## Hooks
+
+## Overview
+
+Table is borken?
+
+<table>
+  <thead>
+    <tr>
+      <th>Hook name</th>
+      <th>Returns</th>
+      <th>Example usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>useCart()</td>
+      <td>Cart | null</td>
+      <td>const cart = useCart()</td>
+    </tr>
+  </tbody>
+</table>
+
+### useCart()
+
+The most basic hook is the `useCart()` hook. This hook gives you access to the current cart state (or null, if there is no cart state).
+
+<ExampleWithCode element={<SimpleCartExample />}>
+
+```javascript
+import React from 'react';
+import {useCart} from 'gatsby-theme-shopify-manager';
+
+export function SimpleCartExample() {
+  const cart = useCart();
+
+  if (cart == null || cart.lineItems.length < 1) {
+    return <p>Your cart is empty.</p>;
+  }
+
+  return (
+    <>
+      <p>Your cart has {cart.lineItems.length} items.</p>
+      <ul>
+        {cart.lineItems.map((lineItem) => (
+          <li key={lineItem.title}>
+            {lineItem.title} - {lineItem.variant.title}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+```
+</ExampleWithCode>
+

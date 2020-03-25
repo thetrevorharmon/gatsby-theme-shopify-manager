@@ -3,6 +3,11 @@ require('dotenv').config({
 });
 
 module.exports = {
+  siteMetadata: {
+    title: 'gatsby-theme-shopify-manager',
+    description: `The easiest way to build a Shopify store on Gatsby.`,
+    author: `@thetrevorharmon`,
+  },
   plugins: [
     {
       resolve: `gatsby-theme-shopify-manager`,
@@ -13,5 +18,8 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `@horacioh/gatsby-theme-mdx`,
+    },
   ],
 };
