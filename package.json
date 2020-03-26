@@ -1,19 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "start": "yarn workspace example develop",
+    "start": "yarn workspace docs develop",
     "test": "jest --watch",
     "test-build": "jest",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "yarn lint --fix",
     "pretty": "prettier --write \"**/*.{ts,tsx,js,css,scss}\"",
     "type-check": "yarn workspace gatsby-theme-shopify-manager tsc --noEmit",
-    "build-example": "yarn workspace example build",
+    "build-docs": "yarn workspace docs build",
     "check-all": "yarn lint && yarn type-check && yarn test-build"
   },
   "workspaces": [
     "gatsby-theme-shopify-manager",
-    "example"
+    "docs"
   ],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
