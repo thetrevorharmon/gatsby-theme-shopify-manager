@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/thetrevorharmon/gatsby-theme-shopify-manager/issues"
   },
-  "homepage": "https://github.com/thetrevorharmon/gatsby-theme-shopify-manager#readme",
+  "homepage": "https://gatsby-theme-shopify-manager.netlify.com/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thetrevorharmon/gatsby-theme-shopify-manager.git",

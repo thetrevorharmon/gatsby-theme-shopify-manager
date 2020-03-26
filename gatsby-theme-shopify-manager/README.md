@@ -22,7 +22,7 @@ Set up your `gatsby-config.js`:
 {
   resolve: `gatsby-theme-shopify-manager`,
   options: {
-    shopName: 'your-shop-name`,
+    shopName: `your-shop-name`,
     accessToken: `your-storefront-api-access-token`,
   },
 },
@@ -38,7 +38,7 @@ Start coding. 🚀
 
 ## Full documentation
 
-The full docs are found at [](https://gatsby-theme-shopify-manager.netlify.com/).
+The full docs are found at [https://gatsby-theme-shopify-manager.netlify.com/](https://gatsby-theme-shopify-manager.netlify.com/).
 
 ## Contributing
 
