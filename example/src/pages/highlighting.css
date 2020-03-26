@@ -1,0 +1,5 @@
+@import '~prism-themes/themes/prism-material-oceanic.css';
+
+pre[class*='language-'] {
+  margin: 0;
+}
