@@ -2,4 +2,4 @@
 
 ## Getting started
 
-Just run `yarn start`, which will trigger `yarn workspace example develop`.
+Just run `yarn start`, which will trigger `yarn workspace docs develop`.
