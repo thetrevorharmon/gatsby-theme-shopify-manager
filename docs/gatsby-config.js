@@ -16,6 +16,13 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `hooks`,
+        path: `${__dirname}/src/content/hooks/`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

@@ -1,0 +1,19 @@
+import {SimpleUseCartCount, ExampleWithCode} from '../../components';
+
+### useCartCount()
+
+The `useCartCount()` hook provides the number of items currently in the cart. This hook returns 0 if the cart is null (and will always return a number).
+
+<ExampleWithCode element={<SimpleUseCartCount />}>
+
+```javascript
+import React from 'react';
+import {useCartCount} from 'gatsby-theme-shopify-manager';
+
+export function SimpleUseCartCount() {
+  const cartCount = useCartCount();
+
+  return <p>Your cart has {cartCount} items.</p>;
+}
+```
+</ExampleWithCode>
