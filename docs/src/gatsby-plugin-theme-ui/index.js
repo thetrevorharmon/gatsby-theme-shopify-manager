@@ -39,9 +39,16 @@ export default {
   alerts: {
     ...base.alerts,
     callout: {
-      color: 'text',
+      color: '#555',
       bg: 'muted',
-      border: '1px solid',
+      border: '1px solid #aaa',
+    },
+  },
+  buttons: {
+    primary: {
+      '&:hover': {
+        cursor: 'pointer',
+      },
     },
   },
 };

@@ -1,0 +1,28 @@
+import {SimpleUseCheckoutUrl, ExampleWithCode} from '../../components';
+
+### useCheckoutUrl()
+
+The `useCheckoutUrl()` hook provides the checkout url that is associated with the current cart. It returns `null` when the cart is `null`, and otherwise returns a `string`.
+
+<ExampleWithCode element={<SimpleUseCheckoutUrl />}>
+
+```javascript
+import React from 'react';
+import {useCheckoutUrl} from 'gatsby-theme-shopify-manager';
+
+export function SimpleUseCheckoutUrl() {
+  const checkoutUrl = useCheckoutUrl();
+
+  return checkoutUrl == null ? (
+    <p>There is no active checkout.</p>
+  ) : (
+    <p>
+      <a href={checkoutUrl} target="_blank" rel="noopener noreferrer">
+        Complete Your Order →
+      </a>
+    </p>
+  );
+}
+
+```
+</ExampleWithCode>
