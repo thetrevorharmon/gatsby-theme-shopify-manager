@@ -1,0 +1,40 @@
+import {SimpleUseAddItemToCart, ExampleWithCode} from '../../components';
+
+### useAddItemToCart()
+
+The `useAddItemToCart` is similar to the `useAddItemsToCart`, but is only for a single item at a time. The hook returns a function that accepts three arguments: `variantId`, `quantity`, and (optionally) an array of `customAttributes`.
+
+<ExampleWithCode element={<SimpleUseAddItemToCart />}>
+
+```javascript
+import React from 'react';
+import {Button} from 'theme-ui';
+import {useAddItemToCart, useCartCount} from 'gatsby-theme-shopify-manager';
+
+export function SimpleUseAddItemToCart() {
+  const cartCount = useCartCount();
+  const addItemToCart = useAddItemToCart();
+
+  async function addToCart() {
+    const variantId = 'some_variant_id';
+    const quantity = 1;
+
+    try {
+      await addItemToCart(variantId, quantity);
+      alert('Successfully added that item to your cart!');
+    } catch {
+      alert('There was a problem adding that item to your cart.');
+    }
+  }
+
+  return (
+    <>
+      <p>There are currently {cartCount} items in your cart.</p>
+      <Button onClick={addToCart}>
+        Add an item to your cart
+      </Button>
+    </>
+  );
+}
+```
+</ExampleWithCode>
