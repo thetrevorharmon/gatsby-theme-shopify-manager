@@ -1,16 +1,14 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui';
-import {Box, Grid} from 'theme-ui';
+import {Box} from 'theme-ui';
 
 export function ExampleWithCode({element, children}) {
   return (
-    <Box>
-      <Grid columns={2} gap={0}>
-        <Box sx={{backgroundColor: 'muted', padding: 2, paddingLeft: 4}}>
-          {element}
-        </Box>
-        <Box>{children}</Box>
-      </Grid>
+    <Box sx={{mt: 4, mb: 4}}>
+      <Box sx={{backgroundColor: 'muted', padding: 2, paddingLeft: 4, mb: 3}}>
+        {element}
+      </Box>
+      <Box>{children}</Box>
     </Box>
   );
 }

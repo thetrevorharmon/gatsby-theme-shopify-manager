@@ -1,41 +1,12 @@
 import React from 'react';
-import {useStaticQuery, graphql} from 'gatsby';
+import {useProducts} from '../utils';
 
 export function Product() {
-  const {
-    allShopifyProduct: {nodes},
-  } = useStaticQuery(
-    graphql`
-      query ProductQuery {
-        allShopifyProduct(filter: {}, limit: 1) {
-          nodes {
-            shopifyId
-            description
-            descriptionHtml
-            title
-            variants {
-              shopifyId
-              image {
-                id
-              }
-              selectedOptions {
-                name
-                value
-              }
-              title
-              price
-            }
-          }
-        }
-      }
-    `,
-  );
-  const [product] = nodes;
-  const [variant] = product.variants;
+  const [product] = useProducts();
 
   return (
     <p>
-      {product.title} - {variant.title}
+      {product.title} - {product.variant.title}
     </p>
   );
 }
