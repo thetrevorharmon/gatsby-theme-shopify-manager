@@ -1,5 +1,1 @@
-# gatsby-source-shopify-manager
-
-## Getting started
-
-Just run `yarn start`, which will trigger `yarn workspace docs develop`.
+gatsby-theme-shopify-manager/README.md
