@@ -24,10 +24,15 @@ export default {
       mt: 4,
       mb: 2,
     },
+    th: {
+      ...base.styles.th,
+      pr: 3,
+    },
     td: {
-      borderBottom: '1px dashed',
-      pt: 2,
-      pb: 2,
+      borderBottom: '1px solid #aaa',
+      p: 2,
+      pl: 0,
+      pr: 3,
     },
   },
   cards: {
@@ -46,6 +51,15 @@ export default {
   },
   buttons: {
     primary: {
+      '&:hover': {
+        cursor: 'pointer',
+      },
+    },
+    controlStrip: {
+      fontSize: 1,
+      px: 2,
+      py: 1,
+      backgroundColor: 'secondary',
       '&:hover': {
         cursor: 'pointer',
       },

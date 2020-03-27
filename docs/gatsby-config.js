@@ -7,6 +7,7 @@ module.exports = {
     title: 'gatsby-theme-shopify-manager',
     description: `The easiest way to build a Shopify store on Gatsby.`,
     author: `@thetrevorharmon`,
+    twitterHandle: `@thetrevorharmon`,
   },
   plugins: [
     {

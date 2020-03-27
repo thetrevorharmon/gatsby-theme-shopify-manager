@@ -34,7 +34,35 @@ To start using it, open your `gatsby-config` file and include your Shop name and
 },
 ```
 
-When you use this theme, it automatically includes `gatsby-source-shopify` and sets it up for you. These options are passed to that package, as well as used internally to create a connection to Shopify using [shopify-buy](https://shopify.github.io/js-buy-sdk/). Once you've set up the plugin, you're ready to start using
+When you use this theme, it automatically includes `gatsby-source-shopify` and sets it up for you. These options are passed to that package, as well as used internally to create a connection to Shopify using [shopify-buy](https://shopify.github.io/js-buy-sdk/).
+
+### Configuration options
+
+| key         | required | description                                                                                                                    |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| shopName    | yes      | This is the first part of the default Shopify domain. If your domain is my-store.myshopify.com, the shopName would be my-shop. |
+| accessToken | yes      | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
+
+## Context Provider
+
+The Shopify buy client and current cart state are managed using React context. By default, the application is wrapped by the Provider and the `shopName` and `accessToken` are pulled from the config options and passed to it. However, in some cases, it might be preferable to manage the provider.
+
+To use the provider, import it and pass `shopName` and `accessToken` to it as props.
+
+```javascript
+import React from 'react';
+import {ContextProvider} from 'gatsby-theme-shopify-manager';
+export const App = ({children}) => {
+  const shopName = 'some-shop-name';
+  const accessToken = 'some-access-token';
+
+  return (
+    <ContextProvider shopName={shopName} accessToken={accessToken}>
+      {children}
+    </ContextProvider>
+  );
+};
+```
 
 ## Hooks
 

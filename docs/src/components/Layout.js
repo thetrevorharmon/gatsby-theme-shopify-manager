@@ -6,13 +6,13 @@ import {useStaticQuery, graphql} from 'gatsby';
 const Layout = ({children}) => {
   const {
     site: {
-      siteMetadata: {title},
+      siteMetadata: {twitterHandle},
     },
   } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
-          title
+          twitterHandle
         }
       }
     }
@@ -31,11 +31,12 @@ const Layout = ({children}) => {
         <main>{children}</main>
         <footer sx={{mt: 6}}>
           <Styled.p>
-            © {new Date().getFullYear()} {title}, Built with
-            {` `}
-            <Styled.a href="https://www.gatsbyjs.org">Gatsby</Styled.a>
-            {` and `}
-            <Styled.a href="https://www.shopify.ca">Shopify</Styled.a>.
+            Built with{' '}
+            <span role="img" aria-label="love">
+              ❤️
+            </span>{' '}
+            by{' '}
+            <a href={`http://twitter.com/${twitterHandle}`}>{twitterHandle}.</a>
           </Styled.p>
         </footer>
       </div>

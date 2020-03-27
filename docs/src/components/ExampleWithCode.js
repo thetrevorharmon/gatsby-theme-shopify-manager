@@ -1,14 +1,16 @@
 /** @jsx jsx */
 import {jsx} from 'theme-ui';
 import {Box} from 'theme-ui';
+import {ControlStrip} from '../components';
 
 export function ExampleWithCode({element, children}) {
   return (
     <Box sx={{mt: 4, mb: 4}}>
-      <Box sx={{backgroundColor: 'muted', padding: 2, paddingLeft: 4, mb: 3}}>
+      <Box sx={{backgroundColor: 'muted', padding: 3, paddingLeft: 4}}>
         {element}
       </Box>
-      <Box>{children}</Box>
+      <ControlStrip />
+      <Box sx={{mt: 3}}>{children}</Box>
     </Box>
   );
 }
