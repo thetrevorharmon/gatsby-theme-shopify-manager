@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {Styled, jsx} from 'theme-ui';
-import PropTypes from 'prop-types';
 import {useStaticQuery, graphql} from 'gatsby';
+import {Link} from '../components';
 
 const Layout = ({children}) => {
   const {
@@ -36,16 +36,14 @@ const Layout = ({children}) => {
               ❤️
             </span>{' '}
             by{' '}
-            <a href={`http://twitter.com/${twitterHandle}`}>{twitterHandle}.</a>
+            <Link url={`http://twitter.com/${twitterHandle}`}>
+              {twitterHandle}.
+            </Link>
           </Styled.p>
         </footer>
       </div>
     </Styled.root>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export {Layout};

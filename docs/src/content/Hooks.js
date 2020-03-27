@@ -1,7 +1,10 @@
+/** @jsx jsx */
+// eslint-disable-next-line
 import React from 'react';
+import {jsx, Box} from 'theme-ui';
 import {useStaticQuery, graphql} from 'gatsby';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
-import {Link} from 'gatsby';
+import {Link} from '../components';
 
 export function Hooks() {
   const {
@@ -14,6 +17,9 @@ export function Hooks() {
             node {
               name
               childMdx {
+                frontmatter {
+                  order
+                }
                 body
                 tableOfContents
               }
@@ -24,7 +30,26 @@ export function Hooks() {
     `,
   );
 
-  const hooksDocumentationFiles = edges.map((edge) => edge.node);
+  const hooksDocumentationFiles = edges
+    .map((edge) => edge.node)
+    .sort((firstNode, secondNode) => {
+      const firstNodeFrontmatter = firstNode.childMdx.frontmatter;
+      const secondNodeFrontmatter = secondNode.childMdx.frontmatter;
+
+      if (firstNodeFrontmatter.order > secondNodeFrontmatter.order) {
+        return 1;
+      }
+
+      if (firstNodeFrontmatter.order < secondNodeFrontmatter.order) {
+        return -1;
+      }
+
+      if (firstNodeFrontmatter.title > secondNodeFrontmatter.title) {
+        return 1;
+      }
+
+      return -1;
+    });
 
   return (
     <>
@@ -34,13 +59,17 @@ export function Hooks() {
 
           return (
             <li key={hook.name}>
-              <Link to={`#${hookLink}`}>{hook.name}</Link>
+              <Link url={`#${hookLink}`}>{hook.name}</Link>
             </li>
           );
         })}
       </ul>
       {hooksDocumentationFiles.map((hook) => {
-        return <MDXRenderer key={hook.name}>{hook.childMdx.body}</MDXRenderer>;
+        return (
+          <Box key={hook.name} sx={{my: 5}}>
+            <MDXRenderer>{hook.childMdx.body}</MDXRenderer>
+          </Box>
+        );
       })}
     </>
   );
