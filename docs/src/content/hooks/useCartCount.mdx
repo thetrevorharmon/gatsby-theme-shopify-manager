@@ -2,7 +2,7 @@ import {ExampleUseCartCount, ExampleWithCode} from '../../components';
 
 ### useCartCount()
 
-The `useCartCount()` hook provides the number of items currently in the cart. This hook returns 0 if the cart is null (and will always return a number).
+The `useCartCount()` hook provides the number of items currently in the cart. This hook returns 0 if the cart is null (and will always return a number). This method does not return just `cartItems.length`, but sums the quantity of each variant in the cart.
 
 <ExampleWithCode element={<ExampleUseCartCount />}>
 

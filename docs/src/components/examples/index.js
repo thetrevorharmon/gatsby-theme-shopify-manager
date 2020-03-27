@@ -4,3 +4,5 @@ export {ExampleUseCartCount} from './ExampleUseCartCount';
 export {ExampleUseCheckoutUrl} from './ExampleUseCheckoutUrl';
 export {ExampleUseAddItemsToCart} from './ExampleUseAddItemsToCart';
 export {ExampleUseAddItemToCart} from './ExampleUseAddItemToCart';
+export {ExampleUseRemoveItemsFromCart} from './ExampleUseRemoveItemsFromCart';
+export {ExampleUseRemoveItemFromCart} from './ExampleUseRemoveItemFromCart';
