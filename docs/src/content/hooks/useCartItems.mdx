@@ -1,16 +1,16 @@
-import {SimpleUseCartItems, ExampleWithCode} from '../../components';
+import {ExampleUseCartItems, ExampleWithCode} from '../../components';
 
 ### useCartItems()
 
 The `useCartItems()` hook provides access to the items currently in the cart. This hook always returns an array.
 
-<ExampleWithCode element={<SimpleUseCartItems />}>
+<ExampleWithCode element={<ExampleUseCartItems />}>
 
 ```javascript
 import React from 'react';
 import {useCartItems} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseCartItems() {
+export function ExampleUseCartItems() {
   const cartItems = useCartItems();
 
   if (cartItems.length < 1) {
