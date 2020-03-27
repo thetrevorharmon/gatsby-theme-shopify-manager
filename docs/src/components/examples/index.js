@@ -6,3 +6,4 @@ export {ExampleUseAddItemsToCart} from './ExampleUseAddItemsToCart';
 export {ExampleUseAddItemToCart} from './ExampleUseAddItemToCart';
 export {ExampleUseRemoveItemsFromCart} from './ExampleUseRemoveItemsFromCart';
 export {ExampleUseRemoveItemFromCart} from './ExampleUseRemoveItemFromCart';
+export {ExampleUseUpdateItemQuantity} from './ExampleUseUpdateItemQuantity';
