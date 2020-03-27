@@ -18,6 +18,16 @@ const Layout = ({children}) => {
     }
   `);
 
+  const heartEmoji = (
+    <span role="img" aria-label="love">
+      ❤️
+    </span>
+  );
+
+  const twitterLink = (
+    <Link url={`http://twitter.com/${twitterHandle}`}>{twitterHandle}</Link>
+  );
+
   return (
     <Styled.root>
       <div
@@ -31,14 +41,7 @@ const Layout = ({children}) => {
         <main>{children}</main>
         <footer sx={{mt: 6}}>
           <Styled.p>
-            Built with{' '}
-            <span role="img" aria-label="love">
-              ❤️
-            </span>{' '}
-            by{' '}
-            <Link url={`http://twitter.com/${twitterHandle}`}>
-              {twitterHandle}.
-            </Link>
+            Built with {heartEmoji} by {twitterLink}.
           </Styled.p>
         </footer>
       </div>
