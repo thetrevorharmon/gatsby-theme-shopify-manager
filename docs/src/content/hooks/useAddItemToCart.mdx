@@ -1,17 +1,17 @@
-import {SimpleUseAddItemToCart, ExampleWithCode} from '../../components';
+import {ExampleUseAddItemToCart, ExampleWithCode} from '../../components';
 
 ### useAddItemToCart()
 
 The `useAddItemToCart` is similar to the `useAddItemsToCart`, but is only for a single item at a time. The hook returns a function that accepts three arguments: `variantId`, `quantity`, and (optionally) an array of `customAttributes`.
 
-<ExampleWithCode element={<SimpleUseAddItemToCart />}>
+<ExampleWithCode element={<ExampleUseAddItemToCart />}>
 
 ```javascript
 import React from 'react';
 import {Button} from 'theme-ui';
 import {useAddItemToCart, useCartCount} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseAddItemToCart() {
+export function ExampleUseAddItemToCart() {
   const cartCount = useCartCount();
   const addItemToCart = useAddItemToCart();
 

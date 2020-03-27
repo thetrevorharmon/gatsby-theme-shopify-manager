@@ -1,16 +1,16 @@
-import {SimpleUseCart, ExampleWithCode} from '../../components';
+import {ExampleUseCart, ExampleWithCode} from '../../components';
 
 ### useCart()
 
 The most basic hook is the `useCart()` hook. This hook gives you access to the current cart state (or null, if there is no cart state). From this object you can get access to the line items, the total amounts, and additional checkout-related information.
 
-<ExampleWithCode element={<SimpleUseCart />}>
+<ExampleWithCode element={<ExampleUseCart />}>
 
 ```javascript
 import React from 'react';
 import {useCart} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseCart() {
+export function ExampleUseCart() {
   const cart = useCart();
 
   if (cart == null) {

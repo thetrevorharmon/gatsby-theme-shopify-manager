@@ -1,7 +1,7 @@
 import React from 'react';
 import {useCheckoutUrl} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseCheckoutUrl() {
+export function ExampleUseCheckoutUrl() {
   const checkoutUrl = useCheckoutUrl();
 
   return checkoutUrl == null ? (

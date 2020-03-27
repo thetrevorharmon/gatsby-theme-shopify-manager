@@ -1,7 +1,7 @@
 import React from 'react';
 import {useCartItems} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseCartItems() {
+export function ExampleUseCartItems() {
   const cartItems = useCartItems();
 
   if (cartItems.length < 1) {

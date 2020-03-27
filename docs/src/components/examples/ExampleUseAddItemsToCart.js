@@ -1,19 +1,23 @@
 import React from 'react';
 import {Button} from 'theme-ui';
-import {useAddItemToCart, useCartCount} from 'gatsby-theme-shopify-manager';
+import {useAddItemsToCart, useCartCount} from 'gatsby-theme-shopify-manager';
 import {useProducts} from '../../utils';
 
-export function SimpleUseAddItemToCart() {
+export function ExampleUseAddItemsToCart() {
   const cartCount = useCartCount();
-  const addItemToCart = useAddItemToCart();
+  const addItemsToCart = useAddItemsToCart();
   const products = useProducts();
 
   async function addToCart() {
-    const variantId = products[0].variants[0].shopifyId;
-    const quantity = 1;
+    const items = [
+      {
+        variantId: products[0].variants[0].shopifyId,
+        quantity: 1,
+      },
+    ];
 
     try {
-      await addItemToCart(variantId, quantity);
+      await addItemsToCart(items);
       alert('Successfully added that item to your cart!');
     } catch {
       alert('There was a problem adding that item to your cart.');
@@ -24,7 +28,7 @@ export function SimpleUseAddItemToCart() {
     <>
       <p>There are currently {cartCount} items in your cart.</p>
       <Button onClick={addToCart} sx={{mb: 3}}>
-        Add an item to your cart
+        Add items to your cart
       </Button>
     </>
   );

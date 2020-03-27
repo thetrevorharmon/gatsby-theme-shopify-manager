@@ -1,17 +1,17 @@
-import {SimpleUseAddItemsToCart, ExampleWithCode} from '../../components';
+import {ExampleUseAddItemsToCart, ExampleWithCode} from '../../components';
 
 ### useAddItemsToCart()
 
 The `useAddItemsToCart` hook allows you to add multiple items to the cart at a single time. The hook returns a function that accepts an array of objects with keys `variantId` and `quantity`. It returns a `void` promise that will throw if it encounters an error. You can optionally include an array of `customAttributes` with each item.
 
-<ExampleWithCode element={<SimpleUseAddItemsToCart />}>
+<ExampleWithCode element={<ExampleUseAddItemsToCart />}>
 
 ```javascript
 import React from 'react';
 import {Button} from 'theme-ui';
 import {useAddItemsToCart, useCartCount} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseAddItemsToCart() {
+export function ExampleUseAddItemsToCart() {
   const cartCount = useCartCount();
   const addItemsToCart = useAddItemsToCart();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useCart} from 'gatsby-theme-shopify-manager';
 
-export function SimpleUseCart() {
+export function ExampleUseCart() {
   const cart = useCart();
 
   if (cart == null) {
