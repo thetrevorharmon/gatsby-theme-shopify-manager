@@ -1,7 +1,4 @@
-/** @jsx jsx */
-// eslint-disable-next-line
 import React from 'react';
-import {jsx, Box} from 'theme-ui';
 import {useStaticQuery, graphql} from 'gatsby';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import {Link} from '../components';
@@ -65,11 +62,7 @@ export function Hooks() {
         })}
       </ul>
       {hooksDocumentationFiles.map((hook) => {
-        return (
-          <Box key={hook.name} sx={{my: 5}}>
-            <MDXRenderer>{hook.childMdx.body}</MDXRenderer>
-          </Box>
-        );
+        return <MDXRenderer key={hook.name}>{hook.childMdx.body}</MDXRenderer>;
       })}
     </>
   );

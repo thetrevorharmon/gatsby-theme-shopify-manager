@@ -1,5 +1,6 @@
 import React from 'react';
 import {useCheckoutUrl} from 'gatsby-theme-shopify-manager';
+import {Link} from '../../components';
 
 export function ExampleUseCheckoutUrl() {
   const checkoutUrl = useCheckoutUrl();
@@ -8,9 +9,9 @@ export function ExampleUseCheckoutUrl() {
     <p>There is no active checkout.</p>
   ) : (
     <p>
-      <a href={checkoutUrl} target="_blank" rel="noopener noreferrer">
+      <Link url={checkoutUrl} target="_blank" rel="noopener noreferrer">
         Complete Your Order →
-      </a>
+      </Link>
     </p>
   );
 }

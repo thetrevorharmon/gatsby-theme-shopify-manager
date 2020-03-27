@@ -25,6 +25,12 @@ export function ExampleUseUpdateItemQuantity() {
     }
   }
 
+  function submitForm(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    updateQuantity();
+  }
+
   const itemMarkup =
     item == null ? (
       <p>Your cart is empty.</p>
@@ -35,7 +41,7 @@ export function ExampleUseUpdateItemQuantity() {
     );
 
   const formMarkup = (
-    <Flex sx={{alignItems: 'flex-start'}} as="form" onSubmit={updateQuantity}>
+    <Flex sx={{alignItems: 'flex-start'}} as="form" onSubmit={submitForm}>
       <Input
         sx={{width: '50px', mr: 3}}
         type="number"

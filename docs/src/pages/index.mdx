@@ -69,3 +69,42 @@ export const App = ({children}) => {
 The main export of this package are the hooks that you can use. Here are the hooks you can use:
 
 <Hooks />
+
+## Escape Hooks
+
+In addition to the normal hooks, there are two 'escape' hooks. These hooks allow access to setting the cart state and the client object that is used to interact with Shopify. It's important to note that these are considered experiemental–**using these hooks may result in unintended side-effects.**
+
+### useClientUnsafe
+
+The `useClientUnsafe` hook returns the client object currently held in the context. From there you can call methods on it to enable more functionality. Shopify has all [the documentation](https://shopify.github.io/js-buy-sdk/) for what you can do with the client object. Example usage:
+
+```javascript
+import React from 'react';
+import {useClientUnsafe} from 'gatsby-theme-shopify-manager';
+
+export function ExampleUseClientUnsafe() {
+  const client = useClientUnsafe();
+  // do work with the client here
+}
+```
+
+### useSetCartUnsafe
+
+The `useSetCartUnsafe` returns a function that allows the user to set the current cart state. You can use it similar to the function returned from a `useState` destructure. This is useful for interactions with the `client` object that return an updated cart object. Example usage:
+
+```javascript
+import React from 'react';
+import {useClientUnsafe, useSetCartUnsafe} from 'gatsby-theme-shopify-manager';
+
+export function ExampleUseSetCartUnsafe() {
+  const client = useClientUnsafe();
+  const setCart = useSetCartUnsafe();
+
+  async function changeCart() {
+    const newCart = await client.doSomeMethodThatReturnsACartObject();
+    setCart(newCart);
+  }
+
+  changeCart();
+}
+```

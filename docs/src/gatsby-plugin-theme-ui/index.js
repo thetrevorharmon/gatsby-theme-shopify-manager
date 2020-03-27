@@ -21,8 +21,8 @@ export default {
     },
     h3: {
       letterSpacing: -0.5,
-      mt: 4,
-      mb: 2,
+      mt: 5,
+      mb: 3,
     },
     th: {
       ...base.styles.th,
