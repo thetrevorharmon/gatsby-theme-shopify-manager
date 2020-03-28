@@ -6,7 +6,7 @@ import {ControlStrip} from '../components';
 export function ExampleWithCode({element, children}) {
   return (
     <Box sx={{mt: 4, mb: 4}}>
-      <Box sx={{backgroundColor: 'muted', padding: 3, paddingLeft: 4}}>
+      <Box sx={{backgroundColor: 'white', padding: 3, paddingLeft: 4}}>
         {element}
       </Box>
       <ControlStrip />
