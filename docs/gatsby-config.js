@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-theme-shopify-manager',
+    title: 'Gatsby Theme Shopify Manager',
     description: `The easiest way to build a Shopify store on Gatsby.`,
     author: `@thetrevorharmon`,
     twitterHandle: `@thetrevorharmon`,

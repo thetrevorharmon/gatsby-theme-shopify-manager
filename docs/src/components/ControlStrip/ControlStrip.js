@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {Button} from 'theme-ui';
+import {jsx, Box, Button} from 'theme-ui';
 import {
   useAddItemToCart,
   useCartItems,
@@ -7,12 +7,10 @@ import {
   useRemoveItemsFromCart,
 } from 'gatsby-theme-shopify-manager';
 import {useProducts} from '../../utils';
-import {jsx} from 'theme-ui';
-import {Box} from 'theme-ui';
 
 export function ControlStrip() {
   return (
-    <Box sx={{padding: 3, pb: 3, background: '#ccc'}}>
+    <Box sx={{padding: 3, pb: 3, backgroundColor: 'backgroundDarker'}}>
       <AddItemButton />
       <RemoveItemButton />
       <EmptyCartButton />
