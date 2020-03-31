@@ -1,18 +1,29 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withDefaults = require(`./defaults`);
+
 module.exports = (themeOptions) => {
-  if (themeOptions.shopName == null || themeOptions.accessToken == null) {
+  const options = withDefaults(themeOptions);
+  const {shouldIncludeSourcePlugin, shopName, accessToken} = options;
+
+  if (shouldIncludeSourcePlugin && (shopName == null || accessToken == null)) {
     throw new Error('You forgot to provide a shopName and/or accessToken');
   }
 
-  return {
-    plugins: [
-      'gatsby-plugin-typescript',
-      {
+  const shopifySourcePlugin = shouldIncludeSourcePlugin
+    ? {
         resolve: `gatsby-source-shopify`,
         options: {
-          shopName: themeOptions.shopName,
-          accessToken: themeOptions.accessToken,
+          shopName,
+          accessToken,
         },
-      },
-    ],
+      }
+    : null;
+
+  const plugins = ['gatsby-plugin-typescript', shopifySourcePlugin].filter(
+    Boolean,
+  );
+
+  return {
+    plugins,
   };
 };
