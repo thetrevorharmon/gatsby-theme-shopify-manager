@@ -40,15 +40,18 @@ When you use this theme, it automatically includes `gatsby-source-shopify` and s
 
 ### Configuration options
 
-| key           | default | description                                                                                                                    |
-| ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `shopName`    | `null`  | This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. |
-| `accessToken` | `null`  | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
-| `shouldIncludeSourcePlugin` | `true`  | By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option. |
+| key                                 | default | description                                                                                                                    |
+| ----------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `shopName`                          | `null`  | This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. |
+| `accessToken`                       | `null`  | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
+| `shouldIncludeSourcePlugin`         | `true`  | By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included. |
+| `shouldWrapRootElementWithProvider` | `true`  | By default, `gatsby-theme-shopify-manager` wraps the application in a `<ContextProvider>`, and passes the `shopName` and `accessToken` provided to the theme options through to the provider. Pass `false` to this option to prevent this behavior. |
 
 ## Context Provider
 
 The Shopify buy client and current cart state are managed using React context. By default, the application is wrapped by the Provider and the `shopName` and `accessToken` are pulled from the config options and passed to it. However, in some cases, it might be preferable to manage the provider.
+
+> By default, `gatsby-theme-shopify-manager` wraps the application in a provider. If you want to manage this yourself, pass `shouldWrapRootElementWithProvider: false` to the theme options. If you don't, you'll have multiple providers that may result in unintended side-effects.
 
 To use the provider, import it and pass `shopName` and `accessToken` to it as props.
 
