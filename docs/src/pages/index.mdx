@@ -40,10 +40,11 @@ When you use this theme, it automatically includes `gatsby-source-shopify` and s
 
 ### Configuration options
 
-| key         | required | description                                                                                                                    |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| shopName    | yes      | This is the first part of the default Shopify domain. If your domain is my-store.myshopify.com, the shopName would be my-shop. |
-| accessToken | yes      | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
+| key           | default | description                                                                                                                    |
+| ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `shopName`    | `null`  | This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. |
+| `accessToken` | `null`  | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
+| `shouldIncludeSourcePlugin` | `true`  | By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option. |
 
 ## Context Provider
 
