@@ -44,6 +44,11 @@ The full docs are found at [https://gatsby-theme-shopify-manager.netlify.com/](h
 
 To contribute to this repo, pull the repo and ask for the appropriate `.env` values for the `/docs` site. Then to start the project, simply run `yarn start` at the project root.
 
-To add a new version, run `yarn version` within the `gatsby-theme-shopify-manager` directory. Change the version number to the appropriate release number (major, minor, patch).
+To add a new version, take the following steps:
 
-Once you've created a new version, run `git push --tags`. Then run `npm publish`.
+1. Increment the `/docs` version of `gatsby-theme-shopify-manager` to whatever it will be.
+2. Stage any changes you want to be part of the commit.
+3. Run `yarn version` within the `gatsby-theme-shopify-manager` directory.
+4. Change the version number to the appropriate release number (major, minor, patch).
+5. Run `git push --tags`.
+6. Run `npm publish`.
