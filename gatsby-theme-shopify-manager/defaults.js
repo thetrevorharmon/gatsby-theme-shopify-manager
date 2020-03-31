@@ -5,11 +5,17 @@ module.exports = (themeOptions) => {
       ? themeOptions.shouldIncludeSourcePlugin
       : true;
 
+  const shouldWrapRootElementWithProvider =
+    themeOptions.shouldWrapRootElementWithProvider != null
+      ? themeOptions.shouldWrapRootElementWithProvider
+      : true;
+
   const shopName = themeOptions.shopName || null;
   const accessToken = themeOptions.accessToken || null;
 
   return {
     shouldIncludeSourcePlugin,
+    shouldWrapRootElementWithProvider,
     shopName,
     accessToken,
   };

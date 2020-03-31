@@ -26,7 +26,10 @@ export function Hero() {
         <Text sx={{color: 'heading'}}>{description}</Text>
       </Box>
       <Box>
-        <img src={HipsterWithMac} />
+        <img
+          alt="A cheery-looking hipster holding a laptop wearing a yellow shirt, a black hat, and glasses"
+          src={HipsterWithMac}
+        />
       </Box>
     </Flex>
   );
