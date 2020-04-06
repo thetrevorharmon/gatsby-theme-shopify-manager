@@ -46,18 +46,18 @@ export default {
     },
     h1: {
       variant: 'text.heading',
-      fontSize: 5,
+      fontSize: [4, 5],
       color: 'black',
     },
     h2: {
       variant: 'text.heading',
-      fontSize: 4,
+      fontSize: [3, 4],
       mt: 6,
       mb: 3,
     },
     h3: {
       variant: 'text.heading',
-      fontSize: 3,
+      fontSize: [2, 3],
       mt: 5,
       mb: 3,
     },
