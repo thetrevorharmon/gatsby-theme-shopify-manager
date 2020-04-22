@@ -1,6 +1,7 @@
-import {Alert, Text} from 'theme-ui';
-import {Hooks} from '../content';
 import '../assets/styles/highlighting.css';
+
+import {Alert, Text, Box} from 'theme-ui';
+import {Hooks} from '../content';
 import {Hero} from '../components';
 
 <Alert sx={{mt: 3}} variant="callout">
@@ -8,13 +9,13 @@ import {Hero} from '../components';
 </Alert>
 <Hero />
 
-<div style={{maxWidth: "70%"}}>
+<Box sx={{maxWidth: ['none', '70%']}}>
 
 Gatsby-theme-shopify-manager is an opinionated Gatsby theme that does the heavy lifting for you in setting up a Shopify store on Gatsby. It provides a foundation to build a fast Shopify shop on top of.
 
 > Want to see this in action? _This page_ is a working example, as well as documentation. Read on to see it!
 
-</div>
+</Box>
 
 ## Getting Started
 
