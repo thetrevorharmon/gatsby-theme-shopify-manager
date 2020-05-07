@@ -274,6 +274,38 @@ describe('ContextProvider', () => {
     });
   });
 
+  it('creates a new cart if the refreshed cart returns null', async () => {
+    (Mocks.CLIENT.checkout.fetch as jest.Mock).mockImplementationOnce(
+      () => null,
+    );
+    (Mocks.CLIENT.checkout.create as jest.Mock).mockImplementationOnce(
+      () => Mocks.EMPTY_CART,
+    );
+
+    LocalStorage.set(LocalStorageKeys.CART, JSON.stringify(Mocks.CART));
+    const fetchCartSpy = jest.spyOn(Mocks.CLIENT.checkout, 'fetch');
+    const createCartSpy = jest.spyOn(Mocks.CLIENT.checkout, 'create');
+
+    function MockComponent() {
+      const {cart} = useContext(Context);
+      const content = cart != null ? cart.id : 'fail';
+
+      return <p>{content}</p>;
+    }
+
+    const {asFragment} = render(
+      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+        <MockComponent />
+      </ContextProvider>,
+    );
+
+    await wait(() => {
+      expect(fetchCartSpy).toHaveBeenCalled();
+      expect(createCartSpy).toHaveBeenCalled();
+      expect(asFragment().textContent).toBe(Mocks.EMPTY_CART.id);
+    });
+  });
+
   it('saves the cart object in local storage every time it changes', async () => {
     const localStorageSpy = jest.spyOn(LocalStorage, 'set');
     const newCart = {
