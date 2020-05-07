@@ -7,7 +7,7 @@ export default {
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
-  fontSizes: [12, 14, 16, 26, 32, 40],
+  fontSizes: [12, 14, 20, 26, 32, 40],
   fontWeights: {
     body: 400,
     heading: 800,
@@ -63,6 +63,8 @@ export default {
     },
     h4: {
       variant: 'text.heading',
+      mt: 4,
+      mb: 2,
       fontSize: 2,
     },
     h5: {
@@ -154,6 +156,15 @@ export default {
       '&:hover': {
         cursor: 'pointer',
       },
+    },
+  },
+  cards: {
+    primary: {
+      overflow: 'hidden',
+      background: 'white',
+      padding: 0,
+      borderRadius: 4,
+      boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
     },
   },
   forms: {

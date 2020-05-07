@@ -29,5 +29,6 @@ module.exports = {
     {
       resolve: `@horacioh/gatsby-theme-mdx`,
     },
+    `gatsby-plugin-react-helmet`,
   ],
 };
