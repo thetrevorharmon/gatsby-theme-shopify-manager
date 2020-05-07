@@ -1,17 +1,23 @@
 import '../assets/styles/highlighting.css';
 
-import {Alert, Text, Box} from 'theme-ui';
+import {Alert, Text, Box, Card, Image, Styled} from 'theme-ui';
 import {Hooks} from '../content';
-import {Hero} from '../components';
+import {Hero, Link} from '../components';
+import OnlyDownExample from '../assets/images/only-down-example.png';
 
-<Alert sx={{mt: 3}} variant="callout">
-  🚧 Pardon our dust, these docs are currently under construction 🚧
-</Alert>
 <Hero />
 
 <Box sx={{maxWidth: ['none', '70%']}}>
 
-Gatsby-theme-shopify-manager is an opinionated Gatsby theme that does the heavy lifting for you in setting up a Shopify store on Gatsby. It provides a foundation to build a fast Shopify shop on top of.
+Gatsby Theme Shopify Manager is the easiest way to build a Shopify store on Gatsby. All you have to do is:
+
+1. Install the theme
+2. Provide API credentials
+3. Import hooks
+
+And then start coding. 🚀
+
+This is a data theme, not a UI theme. That means it takes care of all of the Shopify features (including managing state) for you, and you provide the UI. 
 
 > Want to see this in action? _This page_ is a working example, as well as documentation. Read on to see it!
 
@@ -41,12 +47,47 @@ When you use this theme, it automatically includes `gatsby-source-shopify` and s
 
 ### Configuration options
 
-| key                                 | default | description                                                                                                                    |
-| ----------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `shopName`                          | `null`  | This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. |
-| `accessToken`                       | `null`  | This is the Storefront API token that you get when you make a new Shopify app.                                                 |
-| `shouldIncludeSourcePlugin`         | `true`  | By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included. |
-| `shouldWrapRootElementWithProvider` | `true`  | By default, `gatsby-theme-shopify-manager` wraps the application in a `<ContextProvider>`, and passes the `shopName` and `accessToken` provided to the theme options through to the provider. Pass `false` to this option to prevent this behavior. |
+1. [shopName](#shopname)
+1. [accessToken](#accesstoken)
+1. [shouldIncludeSourcePlugin](#shouldincludesourceplugin)
+1. [shouldWrapRootElementWithProvider](#shouldwraprootelementwithprovider)
+
+#### shopName
+
+This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+```
+{
+  shopName: 'my-store'
+}
+```
+
+#### accessToken
+
+This is the Storefront API token that you get when you make a new Shopify app. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+```
+{
+  accessToken: '12lg(@!l129gj12p['
+}
+```
+
+#### shouldIncludeSourcePlugin
+
+By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included.
+```
+{
+  shouldIncludeSourcePlugin: false
+}
+```
+
+#### shouldWrapRootElementWithProvider
+
+By default, `gatsby-theme-shopify-manager` wraps the application in a `<ContextProvider>`, and passes the `shopName` and `accessToken` provided to the theme options through to the provider. Pass `false` to this option to prevent this behavior.
+```
+{
+  shouldWrapRootElementWithProvider: false
+}
+```
+
 
 ## Context Provider
 
@@ -115,3 +156,26 @@ export function ExampleUseSetCartUnsafe() {
   changeCart();
 }
 ```
+
+## Examples
+
+<Card
+  sx={{
+    mt: 3,
+    maxWidth: 400,
+  }}>
+  <Image sx={{width: '100%'}} src={OnlyDownExample} />
+  <Text sx={{px: 3, py: 1}}>
+    <Styled.h4
+      as={Link}
+      url="https://only-down-manager-example.netlify.app"
+    >
+      Only Down
+    </Styled.h4>
+    <p>Only Down is an example site that shows how to use the gatsby-theme-shopify-manager plugin.</p>
+  </Text>
+</Card>
+
+## Contributing & Issues
+
+Want to add a feature, or report a bug? Head over to the [GitHub repo](https://github.com/thetrevorharmon/gatsby-theme-shopify-manager) to jump in!

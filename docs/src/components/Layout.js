@@ -2,16 +2,19 @@
 import {Styled, jsx} from 'theme-ui';
 import {useStaticQuery, graphql} from 'gatsby';
 import {Link} from '../components';
+import {Helmet as ReactHelmet} from 'react-helmet';
 
 const Layout = ({children}) => {
   const {
     site: {
-      siteMetadata: {twitterHandle},
+      siteMetadata: {title, description, twitterHandle},
     },
   } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
+          title
+          description
           twitterHandle
         }
       }
@@ -30,6 +33,7 @@ const Layout = ({children}) => {
 
   return (
     <Styled.root>
+      <ReactHelmet title={title} meta={description} />
       <div
         sx={{
           margin: `0 auto`,
