@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "yarn workspace docs develop",
+    "start-broadcast": "yarn workspace docs develop-broadcast",
     "test": "jest --watch",
     "test-build": "jest",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
