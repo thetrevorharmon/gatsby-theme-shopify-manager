@@ -29,6 +29,13 @@ module.exports = {
     {
       resolve: `@horacioh/gatsby-theme-mdx`,
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Gatsby Theme Shopify Manager`,
+        icon: 'src/assets/images/icon.png',
+      },
+    },
     `gatsby-plugin-react-helmet`,
   ],
 };

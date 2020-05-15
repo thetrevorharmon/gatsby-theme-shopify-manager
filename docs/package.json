@@ -6,6 +6,7 @@
   "scripts": {
     "start": "gatsby develop",
     "develop": "gatsby develop",
+    "develop-broadcast": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build"
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.19.18",
     "gatsby-image": "^2.2.41",
+    "gatsby-plugin-manifest": "^2.4.3",
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-source-filesystem": "^2.2.2",

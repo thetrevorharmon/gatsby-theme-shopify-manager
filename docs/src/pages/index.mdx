@@ -55,39 +55,52 @@ When you use this theme, it automatically includes `gatsby-source-shopify` and s
 #### shopName
 
 This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
-```
+```javascript
 {
-  shopName: 'my-store'
-}
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    shopName: 'my-store',
+  },
+},
 ```
 
 #### accessToken
 
 This is the Storefront API token that you get when you make a new Shopify app. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
-```
+```javascript
 {
-  accessToken: '12lg(@!l129gj12p['
-}
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    accessToken: '12lg(@!l129gj12p['
+  },
+},
 ```
 
 #### shouldIncludeSourcePlugin
 
 By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included.
-```
+```javascript
 {
-  shouldIncludeSourcePlugin: false
-}
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    // default value is true
+    shouldIncludeSourcePlugin: false
+  },
+},
 ```
 
 #### shouldWrapRootElementWithProvider
 
 By default, `gatsby-theme-shopify-manager` wraps the application in a `<ContextProvider>`, and passes the `shopName` and `accessToken` provided to the theme options through to the provider. Pass `false` to this option to prevent this behavior.
-```
+```javascript
 {
-  shouldWrapRootElementWithProvider: false
-}
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    // default value is true
+    shouldWrapRootElementWithProvider: false
+  },
+},
 ```
-
 
 ## Context Provider
 
