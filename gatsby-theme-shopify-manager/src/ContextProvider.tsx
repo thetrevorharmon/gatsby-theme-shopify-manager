@@ -33,9 +33,14 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
       try {
         const refreshedCart = await client.checkout.fetch(cartId);
 
+        if (refreshedCart == null) {
+          return getNewCart();
+        }
+
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         const cartHasBeenPurchased = refreshedCart.completedAt != null;
+
         if (cartHasBeenPurchased) {
           getNewCart();
         } else {
