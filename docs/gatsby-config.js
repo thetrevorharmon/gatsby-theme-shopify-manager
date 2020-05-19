@@ -8,6 +8,7 @@ module.exports = {
     description: `The easiest way to build a Shopify store on Gatsby.`,
     author: `@thetrevorharmon`,
     twitterHandle: `@thetrevorharmon`,
+    siteUrl: 'https://gatsby-theme-shopify-manager.netlify.app',
   },
   plugins: [
     {
