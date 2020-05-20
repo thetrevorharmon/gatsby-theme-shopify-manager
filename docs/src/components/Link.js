@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {jsx, Link as ThemeUiLink} from 'theme-ui';
 import {Link as GatsbyLink} from 'gatsby';
+import {OutboundLink} from 'gatsby-plugin-google-analytics';
 
 const EXTERNAL_URL_PATTERN = /^http/;
 
@@ -9,7 +10,7 @@ export function Link({url, children, ...rest}) {
 
   if (isExternalUrl) {
     return (
-      <ThemeUiLink href={url} {...rest}>
+      <ThemeUiLink as={OutboundLink} href={url} {...rest}>
         {children}
       </ThemeUiLink>
     );
