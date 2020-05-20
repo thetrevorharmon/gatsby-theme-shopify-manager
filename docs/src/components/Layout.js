@@ -30,7 +30,15 @@ const Layout = ({children}) => {
   );
 
   const twitterLink = (
-    <Link url={`http://twitter.com/${twitterHandle}`}>{twitterHandle}</Link>
+    <Link url={`https://twitter.com/${twitterHandle}`}>{twitterHandle}</Link>
+  );
+
+  const pabloStanleyLink = (
+    <Link url="https://twitter.com/pablostanley">Pablo Stanley</Link>
+  );
+
+  const openPeepsLink = (
+    <Link url="https://www.openpeeps.com/">Open Peeps</Link>
   );
 
   const meta = [
@@ -82,7 +90,8 @@ const Layout = ({children}) => {
         <main>{children}</main>
         <footer sx={{mt: 6}}>
           <Styled.p>
-            Built with {heartEmoji} by {twitterLink}.
+            Illustrations are from {openPeepsLink} by {pabloStanleyLink}. Built
+            with {heartEmoji} by {twitterLink}.
           </Styled.p>
         </footer>
       </div>
