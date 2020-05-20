@@ -6,6 +6,7 @@ import {
 } from 'gatsby-theme-shopify-manager';
 
 export function ExampleUseRemoveItemsFromCart() {
+  const keyModifier = 'ExampleUseRemoveItemsFromCart';
   const cartItems = useCartItems();
   const removeItemsFromCart = useRemoveItemsFromCart();
 
@@ -29,7 +30,7 @@ export function ExampleUseRemoveItemsFromCart() {
         <p>Your cart has the following items:</p>
         <ul>
           {cartItems.map((lineItem) => (
-            <li key={lineItem.title}>
+            <li key={`${keyModifier}-${lineItem.id}`}>
               {lineItem.title} - {lineItem.variant.title}
             </li>
           ))}

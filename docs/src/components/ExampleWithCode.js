@@ -9,7 +9,7 @@ export function ExampleWithCode({element, children}) {
       <Box sx={{backgroundColor: 'white', padding: 3, paddingLeft: 4}}>
         {element}
       </Box>
-      <ControlStrip />
+      <ControlStrip mdxType={element.props.mdxType} />
       <Box sx={{mt: 3}}>{children}</Box>
     </Box>
   );

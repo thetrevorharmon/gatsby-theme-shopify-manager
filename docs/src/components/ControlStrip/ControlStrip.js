@@ -8,12 +8,15 @@ import {
 } from 'gatsby-theme-shopify-manager';
 import {useProducts} from '../../utils';
 
-export function ControlStrip() {
+export function ControlStrip({mdxType}) {
   return (
-    <Box sx={{padding: 3, pb: 3, backgroundColor: 'backgroundDarker'}}>
-      <AddItemButton />
-      <RemoveItemButton />
-      <EmptyCartButton />
+    <Box
+      sx={{padding: 3, pb: 3, backgroundColor: 'backgroundDarker'}}
+      key={`${mdxType}-Container`}
+    >
+      <AddItemButton key={`${mdxType}-AddItemButton`} />
+      <RemoveItemButton key={`${mdxType}-RemoveItemButton`} />
+      <EmptyCartButton key={`${mdxType}-EmptyCartButton`} />
     </Box>
   );
 }

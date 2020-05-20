@@ -56,7 +56,7 @@ export function Hooks() {
 
           return (
             <li key={hook.name}>
-              <Link url={`#${hookLink}`}>{hook.name}</Link>
+              <Link url={`/#${hookLink}`}>{hook.name}</Link>
             </li>
           );
         })}
