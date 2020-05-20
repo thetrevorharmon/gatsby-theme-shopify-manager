@@ -9,7 +9,7 @@ import OnlyDownExample from '../assets/images/only-down-example.png';
 
 <Box sx={{maxWidth: ['none', '70%']}}>
 
-Gatsby Theme Shopify Manager is the easiest way to build a Shopify store on Gatsby. All you have to do is:
+Gatsby Theme Shopify Manager is a Gatsby theme that manages the data connections between Shopify and your Gatsby storefront. All you have to do is:
 
 1. Install the theme
 2. Provide API credentials
@@ -17,7 +17,7 @@ Gatsby Theme Shopify Manager is the easiest way to build a Shopify store on Gats
 
 And then start coding. 🚀
 
-This is a data theme, not a UI theme. That means it takes care of all of the Shopify features (including managing state) for you, and you provide the UI. 
+This is a data theme, not a UI theme. It makes setting up a Shopify cart and buyer flow simple (including managing state), so you can focus on making it look great.
 
 > Want to see this in action? _This page_ is a working example, as well as documentation. Read on to see it!
 
@@ -47,10 +47,26 @@ When you use this theme, it automatically includes `gatsby-source-shopify` and s
 
 ### Configuration options
 
-1. [shopName](#shopname)
-1. [accessToken](#accesstoken)
-1. [shouldIncludeSourcePlugin](#shouldincludesourceplugin)
-1. [shouldWrapRootElementWithProvider](#shouldwraprootelementwithprovider)
+There are four options to configure this theme, with only the first two being required.
+  
+1. [shopName](/#shopname)
+1. [accessToken](/#accesstoken)
+1. [shouldIncludeSourcePlugin](/#shouldincludesourceplugin)
+1. [shouldWrapRootElementWithProvider](/#shouldwraprootelementwithprovider)
+
+In case you're looking for a quick copy and paste 👇:
+
+```javascript
+{
+  resolve: `gatsby-theme-shopify-manager`,
+  options: {
+    shopName: 'your-shop-name',
+    accessToken: 'your-api-access-token',
+    shouldIncludeSourcePlugin: false, // default
+    shouldWrapRootElementWithProvider: false, // default
+  },
+},
+```
 
 #### shopName
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {useCartItems} from 'gatsby-theme-shopify-manager';
 
 export function ExampleUseCartItems() {
+  const keyModifier = `ExampleUseCartItems`;
   const cartItems = useCartItems();
 
   if (cartItems.length < 1) {
@@ -13,7 +14,7 @@ export function ExampleUseCartItems() {
       <p>Your cart has the following items:</p>
       <ul>
         {cartItems.map((lineItem) => (
-          <li key={lineItem.title}>
+          <li key={`${keyModifier}-${lineItem.id}`}>
             {lineItem.title} - {lineItem.variant.title}
           </li>
         ))}

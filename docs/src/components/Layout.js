@@ -69,7 +69,7 @@ const Layout = ({children}) => {
   ];
 
   return (
-    <Styled.root>
+    <Styled.root sx={{minHeight: '100vh'}}>
       <ReactHelmet title={title} meta={meta} />
       <div
         sx={{
