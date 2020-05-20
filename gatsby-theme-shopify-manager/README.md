@@ -38,7 +38,7 @@ Start coding. 🚀
 
 ## Full documentation
 
-The full docs are found at [https://gatsby-theme-shopify-manager.netlify.com/](https://gatsby-theme-shopify-manager.netlify.com/).
+The full docs are found at [https://gatsbythemeshopifymanager.com/](https://gatsbythemeshopifymanager.com/).
 
 ## Contributing
 
