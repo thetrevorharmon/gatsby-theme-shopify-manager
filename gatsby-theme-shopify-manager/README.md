@@ -1,4 +1,4 @@
-# gatsby-theme-shopify-manager
+![Gatsby Theme Shopify_Manager](https://gatsbythemeshopifymanager.com/social-header.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a69b3855-3f3c-437f-bd8e-90567d58106a/deploy-status)](https://app.netlify.com/sites/gatsby-theme-shopify-manager/deploys)
 
