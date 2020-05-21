@@ -18,7 +18,7 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
 
   const initialCart = LocalStorage.getInitialCart();
   const [cart, setCart] = useState<ShopifyBuy.Cart | null>(initialCart);
-  
+
   // shopName is a custom domain if it includes a period. free shopNames (URLs) cannot include periods. TODO: Is it better to add a theme config option for "customDomain" instead?
   const isCustomDomain = shopName.includes('.');
 
