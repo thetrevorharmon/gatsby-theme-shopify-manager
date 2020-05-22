@@ -28,6 +28,8 @@
   },
   "keywords": [
     "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
     "shopify"
   ],
   "author": "Trevor Harmon <thetrevorharmon@gmail.com> (http://thetrevorhamon.com)",
