@@ -19,7 +19,7 @@
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-theme-shopify-manager": "0.1.6",
+    "gatsby-theme-shopify-manager": "0.1.7",
     "gatsby-transformer-sharp": "^2.3.16",
     "prism-themes": "^1.3.0",
     "react": "^16.8.0",
