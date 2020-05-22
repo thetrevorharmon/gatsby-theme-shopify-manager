@@ -7,7 +7,6 @@ import {
   SHOP_NAME,
   SHOP_NAME_WITH_CUSTOM_DOMAIN,
   MYSHOPIFY_DOMAIN,
-  CUSTOM_DOMAIN,
 } from './constants';
 import {
   wrapWithContext,
@@ -26,7 +25,6 @@ const Mocks = {
   SHOP_NAME,
   SHOP_NAME_WITH_CUSTOM_DOMAIN,
   MYSHOPIFY_DOMAIN,
-  CUSTOM_DOMAIN,
   VARIANT_ID_IN_CART,
   CHECKOUT_URL,
 };
