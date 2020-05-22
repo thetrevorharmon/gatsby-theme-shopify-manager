@@ -70,7 +70,9 @@ In case you're looking for a quick copy and paste 👇:
 
 #### shopName
 
-This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-store`. If you're using a custom domain with Shopify, you should enter your custom domain instead (e.g. `mystore.com`). This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-store`. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+
+If you're using a custom domain with Shopify, you should enter your custom domain instead (e.g. `mystore.com`). Make sure to only include the name and domain, and omit the protocol (`http`) and any trailing slashes.
 ```javascript
 {
   resolve: `gatsby-theme-shopify-manager`,
