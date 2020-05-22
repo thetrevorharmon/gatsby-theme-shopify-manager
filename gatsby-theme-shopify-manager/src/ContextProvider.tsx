@@ -18,9 +18,12 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
 
   const initialCart = LocalStorage.getInitialCart();
   const [cart, setCart] = useState<ShopifyBuy.Cart | null>(initialCart);
+
+  const isCustomDomain = shopName.includes('.');
+
   const client = ShopifyBuy.buildClient({
     storefrontAccessToken: accessToken,
-    domain: `${shopName}.myshopify.com`,
+    domain: isCustomDomain ? shopName : `${shopName}.myshopify.com`,
   });
 
   useEffect(() => {
