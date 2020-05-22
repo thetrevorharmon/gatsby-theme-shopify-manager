@@ -1,13 +1,13 @@
 import React from 'react';
 import {ContextProvider} from '../../ContextProvider';
-import {DOMAIN, ACCESS_TOKEN} from '../constants';
+import {MYSHOPIFY_DOMAIN, ACCESS_TOKEN} from '../constants';
 import {CART} from '../cart';
 import {ContextOptions} from './types';
 import {LocalStorage, LocalStorageKeys} from '../../utils';
 
 export function wrapWithContext(givenOptions?: Partial<ContextOptions>) {
   const defaults = {
-    shopName: DOMAIN,
+    shopName: MYSHOPIFY_DOMAIN,
     accessToken: ACCESS_TOKEN,
     shouldSetInitialCart: true,
   };

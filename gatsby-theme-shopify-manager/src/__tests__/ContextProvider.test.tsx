@@ -75,7 +75,47 @@ describe('ContextProvider', () => {
     await wait(() =>
       expect(shopifyBuySpy).toHaveBeenCalledWith({
         storefrontAccessToken: Mocks.ACCESS_TOKEN,
-        domain: Mocks.DOMAIN,
+        domain: Mocks.MYSHOPIFY_DOMAIN,
+      }),
+    );
+  });
+
+  it('appends ".myshopify.com" to shopName when customDomain evaluates false', async () => {
+    const shopifyBuySpy = jest.spyOn(ShopifyBuy, 'buildClient');
+
+    render(
+      <ContextProvider
+        shopName={Mocks.SHOP_NAME}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
+        <MockComponent />
+      </ContextProvider>,
+    );
+
+    await wait(() =>
+      expect(shopifyBuySpy).toHaveBeenCalledWith({
+        storefrontAccessToken: Mocks.ACCESS_TOKEN,
+        domain: Mocks.MYSHOPIFY_DOMAIN,
+      }),
+    );
+  });
+
+  it('does not append ".myshopify.com" to shopName when customDomain evaluates true', async () => {
+    const shopifyBuySpy = jest.spyOn(ShopifyBuy, 'buildClient');
+
+    render(
+      <ContextProvider
+        shopName={Mocks.SHOP_NAME_WITH_CUSTOM_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
+        <MockComponent />
+      </ContextProvider>,
+    );
+
+    await wait(() =>
+      expect(shopifyBuySpy).toHaveBeenCalledWith({
+        storefrontAccessToken: Mocks.ACCESS_TOKEN,
+        domain: Mocks.CUSTOM_DOMAIN,
       }),
     );
   });
@@ -84,7 +124,10 @@ describe('ContextProvider', () => {
     const shopifyBuySpy = jest.spyOn(ShopifyBuy, 'buildClient');
 
     render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -153,7 +196,10 @@ describe('ContextProvider', () => {
     }
 
     const {getByText} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -179,7 +225,10 @@ describe('ContextProvider', () => {
     }
 
     const {asFragment} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -204,7 +253,10 @@ describe('ContextProvider', () => {
     }
 
     const {asFragment} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -231,7 +283,10 @@ describe('ContextProvider', () => {
     }
 
     const {asFragment} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -262,7 +317,10 @@ describe('ContextProvider', () => {
     }
 
     const {asFragment} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -294,7 +352,10 @@ describe('ContextProvider', () => {
     }
 
     const {asFragment} = render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
@@ -326,7 +387,10 @@ describe('ContextProvider', () => {
     }
 
     render(
-      <ContextProvider shopName={Mocks.DOMAIN} accessToken={Mocks.ACCESS_TOKEN}>
+      <ContextProvider
+        shopName={Mocks.MYSHOPIFY_DOMAIN}
+        accessToken={Mocks.ACCESS_TOKEN}
+      >
         <MockComponent />
       </ContextProvider>,
     );
