@@ -60,7 +60,7 @@ In case you're looking for a quick copy and paste 👇:
 {
   resolve: `gatsby-theme-shopify-manager`,
   options: {
-    shopName: 'your-shop-name',
+    shopName: 'your-shop-name', // or custom domain
     accessToken: 'your-api-access-token',
     shouldIncludeSourcePlugin: false, // default
     shouldWrapRootElementWithProvider: false, // default
@@ -70,12 +70,12 @@ In case you're looking for a quick copy and paste 👇:
 
 #### shopName
 
-This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-shop`. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-store`. If you're using a custom domain with Shopify, you should enter your custom domain instead (e.g. `mystore.com`). This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
 ```javascript
 {
   resolve: `gatsby-theme-shopify-manager`,
   options: {
-    shopName: 'my-store',
+    shopName: 'my-store', // or mystore.com
   },
 },
 ```
