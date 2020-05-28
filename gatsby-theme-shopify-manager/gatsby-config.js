@@ -4,14 +4,14 @@ const withDefaults = require(`./defaults`);
 module.exports = (themeOptions) => {
   const options = withDefaults(themeOptions);
   const {
-    shouldIncludeSourcePlugin,
+    shouldConfigureSourcePlugin,
     shouldWrapRootElementWithProvider,
     shopName,
     accessToken,
   } = options;
 
   const needsApiInformation =
-    shouldIncludeSourcePlugin === true ||
+    shouldConfigureSourcePlugin === true ||
     shouldWrapRootElementWithProvider === true;
   const missingApiInformation = shopName == null || accessToken == null;
 
@@ -21,7 +21,7 @@ module.exports = (themeOptions) => {
     );
   }
 
-  const shopifySourcePlugin = shouldIncludeSourcePlugin
+  const shopifySourcePlugin = shouldConfigureSourcePlugin
     ? {
         resolve: `gatsby-source-shopify`,
         options: {
