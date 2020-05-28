@@ -17,9 +17,11 @@
     "@types/react-dom": "^16.9.5",
     "@types/shopify-buy": "^1.4.3",
     "gatsby-plugin-typescript": "^2.1.27",
-    "gatsby-source-shopify": "^3.0.43",
     "shopify-buy": "^2.9.0",
     "typescript": "^3.7.5"
+  },
+  "optionalDependencies": {
+    "gatsby-source-shopify": "^3.0.43"
   },
   "devDependencies": {
     "gatsby": "^2.19.18",
