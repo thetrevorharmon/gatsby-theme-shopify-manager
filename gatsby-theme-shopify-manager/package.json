@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-shopify-manager",
   "description": "The easiest way to build a Shopify shop on Gatsby.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -19,9 +19,6 @@
     "gatsby-plugin-typescript": "^2.1.27",
     "shopify-buy": "^2.9.0",
     "typescript": "^3.7.5"
-  },
-  "optionalDependencies": {
-    "gatsby-source-shopify": "^3.0.43"
   },
   "devDependencies": {
     "gatsby": "^2.19.18",
