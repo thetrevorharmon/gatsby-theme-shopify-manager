@@ -28,7 +28,7 @@ This is a data theme, not a UI theme. It makes setting up a Shopify cart and buy
 To start using the theme, install it with your package manager of choice:
 
 ```bash
-yarn add gatsby-theme-shopify-manager
+yarn add gatsby-theme-shopify-manager gatsby-source-shopify
 ```
 
 To start using it, open your `gatsby-config` file and include your Shop name and access token from the Storefront API.
@@ -43,7 +43,7 @@ To start using it, open your `gatsby-config` file and include your Shop name and
 },
 ```
 
-When you use this theme, it automatically includes `gatsby-source-shopify` and sets it up for you. These options are passed to that package, as well as used internally to create a connection to Shopify using [shopify-buy](https://shopify.github.io/js-buy-sdk/).
+The options you pass to this theme are used to configure both `gatsby-source-shopify` and the [shopify-buy](https://shopify.github.io/js-buy-sdk/) client.
 
 ### Configuration options
 
@@ -96,7 +96,7 @@ This is the Storefront API token that you get when you make a new Shopify app. T
 
 #### shouldConfigureSourcePlugin
 
-By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included.
+By default, `gatsby-theme-shopify-manager` passes a configuration object to the `gatsby-source-shopify` plugin in `gatsby-config`. If you need to do advanced configuration of that plugin, pass `false` to this option. From there, you can set up and configure your source plugin as you please.
 ```javascript
 {
   resolve: `gatsby-theme-shopify-manager`,
