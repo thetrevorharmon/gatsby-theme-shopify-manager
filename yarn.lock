@@ -7646,7 +7646,7 @@ gatsby-source-filesystem@^2.2.2, gatsby-source-filesystem@^2.3.28:
     valid-url "^1.0.9"
     xstate "^4.11.0"
 
-gatsby-source-shopify@^3.0.43:
+gatsby-source-shopify@^3.2.30:
   version "3.2.30"
   resolved "https://registry.yarnpkg.com/gatsby-source-shopify/-/gatsby-source-shopify-3.2.30.tgz#8311d555fac9c3826ea38315658d21bc436eb3b9"
   integrity sha512-BImER0DzZva8wfOTds158IStXywgjoCaTBfTO8l5RlZJBvrqc7pohooACh5OsbuIOVNdPw2R7hJnlYzst6Uc2w==
