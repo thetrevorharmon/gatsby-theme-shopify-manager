@@ -28,7 +28,7 @@ This is a data theme, not a UI theme. It makes setting up a Shopify cart and buy
 To start using the theme, install it with your package manager of choice:
 
 ```bash
-yarn add gatsby-theme-shopify-manager
+yarn add gatsby-theme-shopify-manager gatsby-source-shopify
 ```
 
 To start using it, open your `gatsby-config` file and include your Shop name and access token from the Storefront API.
@@ -43,7 +43,7 @@ To start using it, open your `gatsby-config` file and include your Shop name and
 },
 ```
 
-When you use this theme, it automatically includes `gatsby-source-shopify` and sets it up for you. These options are passed to that package, as well as used internally to create a connection to Shopify using [shopify-buy](https://shopify.github.io/js-buy-sdk/).
+The options you pass to this theme are used to configure both `gatsby-source-shopify` and the [shopify-buy](https://shopify.github.io/js-buy-sdk/) client.
 
 ### Configuration options
 
@@ -51,7 +51,7 @@ There are four options to configure this theme, with only the first two being re
   
 1. [shopName](/#shopname)
 1. [accessToken](/#accesstoken)
-1. [shouldIncludeSourcePlugin](/#shouldincludesourceplugin)
+1. [shouldConfigureSourcePlugin](/#shouldConfigureSourcePlugin)
 1. [shouldWrapRootElementWithProvider](/#shouldwraprootelementwithprovider)
 
 In case you're looking for a quick copy and paste 👇:
@@ -62,7 +62,7 @@ In case you're looking for a quick copy and paste 👇:
   options: {
     shopName: 'your-shop-name', // or custom domain
     accessToken: 'your-api-access-token',
-    shouldIncludeSourcePlugin: false, // default
+    shouldConfigureSourcePlugin: false, // default
     shouldWrapRootElementWithProvider: false, // default
   },
 },
@@ -70,7 +70,7 @@ In case you're looking for a quick copy and paste 👇:
 
 #### shopName
 
-This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-store`. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+This is the first part of the default Shopify domain. If your domain is `my-store.myshopify.com`, the shopName would be `my-store`. This value is required unless you pass `false` to both `shouldConfigureSourcePlugin` and `shouldWrapRootElementWithProvider`.
 
 If you're using a custom domain with Shopify, you should enter your custom domain instead (e.g. `mystore.com`). Make sure to only include the name and domain, and omit the protocol (`http`) and any trailing slashes.
 ```javascript
@@ -84,7 +84,7 @@ If you're using a custom domain with Shopify, you should enter your custom domai
 
 #### accessToken
 
-This is the Storefront API token that you get when you make a new Shopify app. This value is required unless you pass `false` to both `shouldIncludeSourcePlugin` and `shouldWrapRootElementWithProvider`.
+This is the Storefront API token that you get when you make a new Shopify app. This value is required unless you pass `false` to both `shouldConfigureSourcePlugin` and `shouldWrapRootElementWithProvider`.
 ```javascript
 {
   resolve: `gatsby-theme-shopify-manager`,
@@ -94,15 +94,15 @@ This is the Storefront API token that you get when you make a new Shopify app. T
 },
 ```
 
-#### shouldIncludeSourcePlugin
+#### shouldConfigureSourcePlugin
 
-By default, `gatsby-theme-shopify-manager` includes the `gatsby-source-shopify` plugin. If you need to do advanced configuration of that plugin, pass `false` to this option, and the `gatsby-source-shopify` plugin will not be included.
+By default, `gatsby-theme-shopify-manager` passes a configuration object to the `gatsby-source-shopify` plugin in `gatsby-config`. If you need to do advanced configuration of that plugin, pass `false` to this option. From there, you can set up and configure your source plugin as you please.
 ```javascript
 {
   resolve: `gatsby-theme-shopify-manager`,
   options: {
     // default value is true
-    shouldIncludeSourcePlugin: false
+    shouldConfigureSourcePlugin: false
   },
 },
 ```
