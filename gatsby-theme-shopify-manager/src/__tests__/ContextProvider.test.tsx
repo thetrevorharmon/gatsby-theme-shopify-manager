@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import {render, wait} from '@testing-library/react';
+import {render, waitFor} from '@testing-library/react';
 import {Context} from '../Context';
 import {ContextProvider} from '../ContextProvider';
 import {Mocks} from '../mocks';
@@ -72,7 +72,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() =>
+    await waitFor(() =>
       expect(shopifyBuySpy).toHaveBeenCalledWith({
         storefrontAccessToken: Mocks.ACCESS_TOKEN,
         domain: Mocks.MYSHOPIFY_DOMAIN,
@@ -92,7 +92,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() =>
+    await waitFor(() =>
       expect(shopifyBuySpy).toHaveBeenCalledWith({
         storefrontAccessToken: Mocks.ACCESS_TOKEN,
         domain: Mocks.MYSHOPIFY_DOMAIN,
@@ -112,7 +112,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() =>
+    await waitFor(() =>
       expect(shopifyBuySpy).toHaveBeenCalledWith({
         storefrontAccessToken: Mocks.ACCESS_TOKEN,
         domain: Mocks.SHOP_NAME_WITH_CUSTOM_DOMAIN,
@@ -132,7 +132,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => expect(shopifyBuySpy).toHaveBeenCalled());
+    await waitFor(() => expect(shopifyBuySpy).toHaveBeenCalled());
   });
 
   it('provides a client object to the consumer', () => {
@@ -204,7 +204,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(localStorageSpy).toHaveBeenCalled();
       expect(getByText(Mocks.CART.id)).toBeTruthy();
     });
@@ -235,7 +235,7 @@ describe('ContextProvider', () => {
 
     const firstRender = asFragment();
 
-    await wait(() => {
+    await waitFor(() => {
       expect(localStorageSpy).toHaveBeenCalled();
       expect(createCartSpy).not.toHaveBeenCalled();
       expect(firstRender.textContent).toBe(initialCart.id);
@@ -261,7 +261,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(createCartSpy).toHaveBeenCalled();
       expect(asFragment().textContent).toBe(Mocks.CART.id);
     });
@@ -291,7 +291,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(fetchCartSpy).toHaveBeenCalled();
       expect(asFragment().textContent).toBe(refreshedCart.id);
     });
@@ -325,7 +325,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(fetchCartSpy).toHaveBeenCalled();
       expect(createCartSpy).toHaveBeenCalled();
       expect(asFragment().textContent).toBe(Mocks.EMPTY_CART.id);
@@ -360,7 +360,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(fetchCartSpy).toHaveBeenCalled();
       expect(createCartSpy).toHaveBeenCalled();
       expect(asFragment().textContent).toBe(Mocks.EMPTY_CART.id);
@@ -395,7 +395,7 @@ describe('ContextProvider', () => {
       </ContextProvider>,
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(localStorageSpy).toHaveBeenCalledTimes(3);
     });
   });
