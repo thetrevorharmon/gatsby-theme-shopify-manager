@@ -43,8 +43,12 @@ export function ContextProvider({shopName, accessToken, children}: Props) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         const cartHasBeenPurchased = refreshedCart.completedAt != null;
+        
+        const cartHasInvalidLineItems = cart.lineItems.find(
+          ({ variant }) => variant == null
+        );
 
-        if (cartHasBeenPurchased) {
+        if (cartHasBeenPurchased || cartHasInvalidLineItems) {
           getNewCart();
         } else {
           setCart(refreshedCart);
