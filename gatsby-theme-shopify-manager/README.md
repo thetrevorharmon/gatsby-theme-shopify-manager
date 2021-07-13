@@ -2,6 +2,10 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a69b3855-3f3c-437f-bd8e-90567d58106a/deploy-status)](https://app.netlify.com/sites/gatsby-theme-shopify-manager/deploys)
 
+# Looking for maintainers
+
+This project is currently not maintained. If you actively use this plugin, please consider becoming a maintainer.
+
 ## Quickstart guide
 
 Install this with npm:
